@@ -255,7 +255,7 @@ public interface Ability extends Registerable
 	/**
 	 * This is the method called by Derius to run your ability. 
 	 * It is similar to bukkits onEnable method.
-	 * @param {MPlayer} the player to use the ability
+	 * @param {DPlayer} the player to use the ability
 	 * @param {Object} other parameter used in some abilities
 	 * @return {Object} this object will be passed to onDeactivate for data transferring.
 	 */
@@ -264,7 +264,7 @@ public interface Ability extends Registerable
 	/**
 	 * This is the method called by Derius when your ability
 	 * is deactivated. It is similar to bukkits onDisable method.
-	 * @param {MPlayer} the player to stop using the ability
+	 * @param {DPlayer} the player to stop using the ability
 	 * @param {Object} object received from onActivate
 	 */
 	public void onDeactivate(DPlayer p, Object other);
