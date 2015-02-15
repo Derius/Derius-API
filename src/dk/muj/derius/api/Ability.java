@@ -163,17 +163,17 @@ public interface Ability extends Registerable
 	
 	/**
 	 * Gets an exception set for the worlds in which
-	 * it is possible to earn exp in this skill.
-	 * @return {WorldExceptionSet} worlds where you can earn exp in this skill
+	 * it is possible to use this ability.
+	 * @return {WorldExceptionSet} worlds where you can use this ability.
 	 */
 	public WorldExceptionSet getWorldsUse();
 	
 	/**
 	 * Sets the exception set for which worlds
-	 * it is possible to earn exp for this skill
-	 * @param {WorldExceptionSet} worldexceptionset
+	 * it is possible to use this ability.
+	 * @param {WorldExceptionSet} worlds where you can use this ability.
 	 */
-	public void setWorldsEarn(WorldExceptionSet worldsUse);
+	public void setWorldsUse(WorldExceptionSet worldsUse);
 	
 	// -------------------------------------------- //
 	// RESTRICTION

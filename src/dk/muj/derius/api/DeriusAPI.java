@@ -9,7 +9,7 @@ public class DeriusAPI
 	// -------------------------------------------- //
 	
 	// This field is set using reflection
-	private static Derius core;
+	private static final Derius core = null;
 	public static Derius getCore() { return core; }
 	
 	// -------------------------------------------- //

@@ -1,12 +1,14 @@
 package dk.muj.derius.api;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.bukkit.Material;
 
 import com.massivecraft.massivecore.Registerable;
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
+
+import dk.muj.derius.api.Ability.AbilityType;
 
 public interface Skill extends Registerable
 {
@@ -289,28 +291,19 @@ public interface Skill extends Registerable
 	// -------------------------------------------- //
 	
 	/**
-	 * Gets the list of active abilities
+	 * Gets the list of abilities in this skill with a specific type.
 	 * @return {List<Ability>} all active abilities related to this skill
 	 */
-	public List<Ability> getActiveAbilities();
-	
-	/**
-	 * Gets the list of passive abilities
-	 * @return {List<Ability>} all passive abilities related to this skill
-	 */
-	public List<Ability> getPassiveAbilities();
+	public default List<Ability> getAbilitiesOfType(AbilityType type)
+	{
+		return this.getAbilities().stream().filter(a -> a.getType() == type).collect(Collectors.toList());
+	}
 	
 	/**
 	 * Gets the list of all abilities related to skill
 	 * @return {List<Ability>} all abilities related to this skill
 	 */
-	public default List<Ability> getAllAbilities()
-	{
-		List<Ability> ret = new ArrayList<Ability>();
-		ret.addAll(this.getPassiveAbilities());
-		ret.addAll(this.getActiveAbilities());
-		return ret;
-	}
+	public abstract List<Ability> getAbilities();
 	
 	// -------------------------------------------- //
 	// ABSTRACT
