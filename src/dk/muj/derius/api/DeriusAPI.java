@@ -22,6 +22,7 @@ public class DeriusAPI
 	 */
 	public static Collection< ? extends DPlayer> getAllDPlayers()
 	{
+		if (core == null) throw new RuntimeException("core is null");
 		return core.getAllDPlayers();
 	}
 	
@@ -36,6 +37,7 @@ public class DeriusAPI
 	 */
 	public static DPlayer getDPlayer(Object senderObject)
 	{
+		if (core == null) throw new RuntimeException("core is null");
 		return core.getDPlayer(senderObject);
 	}
 }

@@ -313,6 +313,7 @@ public interface DPlayer
 	// -------------------------------------------- //
 	
 	public Player getPlayer();
+	public boolean isPlayer();
 	public CommandSender getSender();
 	public String getId();
 	public String getName();
