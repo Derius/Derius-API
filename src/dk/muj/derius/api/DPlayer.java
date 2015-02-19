@@ -1,8 +1,6 @@
 package dk.muj.derius.api;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -107,6 +105,13 @@ public interface DPlayer
 	 * @return {int} maximum possible amount of open specialisation slots
 	 */
 	public int getMaxSpecialisationSlots();
+	
+	/**
+	 * Gets the bonus specialisation slot bonus this player has gotten
+	 * @return {Map<String, Integer>}
+	 * the string is the reason, it could be "perm", "quest", "whatever"
+	 */
+	public Map<String, Integer> getSpecialisationSlotBonus();
 	
 	/**
 	 * Gets the amount of open specialisation slots this player has
@@ -218,14 +223,14 @@ public interface DPlayer
 	 * null if no ability is activated
 	 * @return {Ability} the ability which is activated. null if none
 	 */
-	public Ability getActivatedAbility();
+	public Optional<Ability> getActivatedAbility();
 	
 	/**
 	 * Gets the id of the activated ability
 	 * null if no ability is activated
 	 * @return {Ability} the ability which is activated. null if none
 	 */
-	public void setActivatedAbility(Ability ability);
+	public void setActivatedAbility(Optional<Ability> ability);
 
 	// -------------------------------------------- //
 	// MANAGING CHAT | ACTIVATION
