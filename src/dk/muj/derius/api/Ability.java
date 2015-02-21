@@ -130,6 +130,22 @@ public interface Ability extends Registerable
 	public int getCooldownTicks();
 	
 	// -------------------------------------------- //
+	// FIELD: STAMINA
+	// -------------------------------------------- //
+	
+	/**
+	 * Sets the amount of stamina used upon activation.
+	 * @param {double} the amount which is used
+	 */
+	public void setStaminaUsage(double stamina);
+	
+	/**
+	 * Gets the amount of stamina used upon activation.
+	 * @return {double} the amount of stamina
+	 */
+	public double getStaminaUsage();
+	
+	// -------------------------------------------- //
 	// FIELD TYPE:
 	// -------------------------------------------- //
 	

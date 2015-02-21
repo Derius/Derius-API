@@ -34,6 +34,96 @@ public interface DPlayer
 	public void takeExp(Skill skill, long exp);
 	
 	// -------------------------------------------- //
+	// FIELD: STAMINA
+	// -------------------------------------------- //
+	
+	// RAW
+	/**
+	 * Sets the players stamina
+	 * @param {double} new amount of stamina
+	 */
+	public void setStamina(double newStamina);
+	
+	/**
+	 * Gets players stamina.
+	 * @return {int} players stamina
+	 */
+	public double getStamina();
+	
+	// FINER
+	/**
+	 * Adds stamina to user
+	 * @param {int} the amount of stamina to add
+	 */
+	public void addStamina(double stamina);
+	
+	/**
+	 * Removes stamina from user
+	 * @param {int} the amount of stamina to take away
+	 */
+	public void takeStamina(double stamina);
+	
+	/**
+	 * Has the player the amount of stamina
+	 * @return {boolean} if he has enough stamina
+	 */
+	public boolean hasEnoughStamina(double amount);
+	
+	// -------------------------------------------- //
+	// FIELD: BONUSSTAMINA
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets players bonus stamina.
+	 * @return {int} players bonus stamina
+	 */
+	public double getBonusStamina();
+	
+	/**
+	 * Adds an amount to users bonus stamina
+	 * @param {int} the amount of bonus stamina to add
+	 */
+	public void addBonusStamina(double bonusStamina);
+	
+	/**
+	 * Removes an amount from users bonus stamina
+	 * @param {int} the amount of bonus stamina to take away
+	 */
+	public void takeBonusStamina(double bonusStamina);
+	
+	// -------------------------------------------- //
+	// FIELD: STAMINABOARD
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets whether the scoreboard stays or not.
+	 * @return {boolean} whether the scoreboard stays or not
+	 */
+	public boolean getStaminaBoardStay();
+	
+	/**
+	 * Sets whether the scoreboard stays or not.
+	 * @param {boolean} whether the scoreboard stays or not
+	 */
+	public void setStaminaBoardStay(boolean value);
+	
+	// -------------------------------------------- //
+	// FIELD: BOARDSHOWATALL
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets whether the scoreboard shows up at all.
+	 * @return {boolean} whether the scoreboard shows or not
+	 */
+	public boolean getBoardShowAtAll();
+	
+	/**
+	 * Sets whether the scoreboard shows up at all.
+	 * @param {boolean} whether the scoreboard shows or not
+	 */
+	public void setBoardShowAtAll(boolean value);
+	
+	// -------------------------------------------- //
 	// LEVEL
 	// -------------------------------------------- //
 	
@@ -136,6 +226,7 @@ public interface DPlayer
 	 * @param {int} ticks in the future the cooldown should be set to.
 	 */
 	public void setCooldownExpireIn (int ticks);
+	
 	/**
 	 * Gets players cooldown.
 	 * this is system millis
