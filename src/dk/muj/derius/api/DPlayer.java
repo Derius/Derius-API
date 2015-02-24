@@ -67,29 +67,20 @@ public interface DPlayer
 	 * Has the player the amount of stamina
 	 * @return {boolean} if he has enough stamina
 	 */
-	public boolean hasEnoughStamina(double amount);
-	
-	// -------------------------------------------- //
-	// FIELD: BONUSSTAMINA
-	// -------------------------------------------- //
-	
-	/**
-	 * Gets players bonus stamina.
-	 * @return {int} players bonus stamina
-	 */
-	public double getBonusStamina();
+	public default boolean hasEnoughStamina(double amount)
+	{
+		return this.getStamina() >= amount;
+	}
 	
 	/**
-	 * Adds an amount to users bonus stamina
-	 * @param {int} the amount of bonus stamina to add
+	 * Gets the bonus max stamina amount bonus this player has gotten
+	 * @return {Map<String, Integer>}
+	 * the string is the reason, it could be "perm", "quest", "whatever"
+	 * the double is the amount for that reason.
 	 */
-	public void addBonusStamina(double bonusStamina);
+	public Map<String, Double> getStaminaBonus();
 	
-	/**
-	 * Removes an amount from users bonus stamina
-	 * @param {int} the amount of bonus stamina to take away
-	 */
-	public void takeBonusStamina(double bonusStamina);
+	public double getStaminaMax();
 	
 	// -------------------------------------------- //
 	// FIELD: STAMINABOARD
@@ -200,6 +191,7 @@ public interface DPlayer
 	 * Gets the bonus specialisation slot bonus this player has gotten
 	 * @return {Map<String, Integer>}
 	 * the string is the reason, it could be "perm", "quest", "whatever"
+	 * the integer is the amount for that reason.
 	 */
 	public Map<String, Integer> getSpecialisationSlotBonus();
 	
@@ -225,7 +217,11 @@ public interface DPlayer
 	 * Sets the Cooldown to run out the passed amount of ticks in the future
 	 * @param {int} ticks in the future the cooldown should be set to.
 	 */
-	public void setCooldownExpireIn (int ticks);
+	public default void setCooldownExpireIn (int ticks)
+	{
+		long currentTime = System.currentTimeMillis();
+		setCooldownExpire(currentTime+ticks/20*1000);
+	}
 	
 	/**
 	 * Gets players cooldown.
