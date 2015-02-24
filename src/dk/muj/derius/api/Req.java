@@ -8,10 +8,15 @@ public interface Req extends com.massivecraft.massivecore.cmd.req.Req
 	// ABSTRACT
 	// -------------------------------------------- //
 	
-	public boolean apply(CommandSender sender, Skill skill);
-	public String createErrorMessage(CommandSender sender, Skill skill);
+	// SKill requirements
+	public abstract boolean apply(CommandSender sender, Skill skill);
+	public abstract  String createErrorMessage(CommandSender sender, Skill skill);
 	
-	public boolean apply(CommandSender sender, Ability ability);
-	public String createErrorMessage(CommandSender sender, Ability ability);
+	// Ability requirements
+	public abstract  boolean apply(CommandSender sender, Ability ability);
+	public abstract  String createErrorMessage(CommandSender sender, Ability ability);
+	
+	// Verboose level
+	public abstract VerboseLevel getVerboseLevel();
 
 }

@@ -38,11 +38,11 @@ public interface DPlayer
 	// -------------------------------------------- //
 	
 	// RAW
-	/**
-	 * Sets the players stamina
-	 * @param {double} new amount of stamina
-	 */
-	public void setStamina(double newStamina);
+	///**
+	// * Sets the players stamina
+	// * @param {double} new amount of stamina
+	// */
+	//public void setStamina(double newStamina);
 	
 	/**
 	 * Gets players stamina.
