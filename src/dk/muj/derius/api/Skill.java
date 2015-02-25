@@ -161,6 +161,34 @@ public interface Skill extends Registerable
 	public LvlStatusCalculator getLvlStatusAlgorithm();
 	
 	// -------------------------------------------- //
+	// FIELD: CAP
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets the max level a player can reach in this skill without specialising.
+	 * @return {int} the max level reachable without specialisation.
+	 */
+	public int getSoftCap();
+	
+	/**
+	 * Sets the max level a player can reach in this skill without specialising.
+	 * @param {int} the max level reachable without specialisation.
+	 */
+	public void setSoftCap(int cap);
+	
+	/**
+	 * Gets the max level a player can reach in this skill  with specialising.
+	 * @return {int} the max level reachable with specialisation.
+	 */
+	public int getHardCap();
+	
+	/**
+	 * Sets the max level a player can reach in this skill with specialising.
+	 * @param {int} the max level reachable with specialisation.
+	 */
+	public void setHardtCap(int cap);
+	
+	// -------------------------------------------- //
 	// FIELD: WORLDEXCEPTION
 	// -------------------------------------------- //
 	

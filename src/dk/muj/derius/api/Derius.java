@@ -25,4 +25,38 @@ public interface Derius
 	 */
 	public abstract DPlayer getDPlayer(Object senderObject);
 	
+	// -------------------------------------------- //
+	// SKILLS
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets all registered skills
+	 * @return{Collection<? extends Skill>} all skills
+	 */
+	public abstract Collection< ? extends Skill> getAllSkills();
+	
+	/**
+	 * Gets the skill corresponding to passed id-
+	 * @param {String} id of the skill you want to get.
+	 * @return {Skill} the skill
+	 */
+	public abstract Skill getSkill(String id);
+	
+	// -------------------------------------------- //
+	// ABILITIES
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets all registered abilities
+	 * @return{Collection<? extends Ability>} all abilities
+	 */
+	public abstract Collection< ? extends Ability> getAllAbilities();
+	
+	/**
+	 * Gets the ability corresponding to passed id-
+	 * @param {String} id of the ability you want to get.
+	 * @return {Ability} the ability
+	 */
+	public abstract Ability getAbility(String id);
+	
 }

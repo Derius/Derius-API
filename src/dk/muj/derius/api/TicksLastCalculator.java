@@ -9,7 +9,7 @@ public interface TicksLastCalculator extends Function<Integer, Integer>
 	// ABSTRACT
 	// -------------------------------------------- //
 
-	public Integer calcDuration(int level);
+	public int calcDuration(int level);
 	
 	// -------------------------------------------- //
 	// DEFAULT
