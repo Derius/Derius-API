@@ -2,8 +2,6 @@ package dk.muj.derius.api.mixin;
 
 import org.bukkit.entity.Player;
 
-import com.massivecraft.massivecore.util.IdUtil;
-
 public interface StaminaMixin extends Mixin
 {
 	// -------------------------------------------- //
@@ -14,7 +12,7 @@ public interface StaminaMixin extends Mixin
 	 * The amount of millis it will take for this player to fully regen stamina
 	 * @param {long} millis it would take from 0 to max
 	 */
-	public abstract long regenTime(Object senderObject);
+	public abstract long regenTime(Player player);
 	
 	/*
 	 * Only one of the following multipliers can be applied.
@@ -26,6 +24,11 @@ public interface StaminaMixin extends Mixin
 	 * If none of the four above applied they are walking.
 	 */
 	
+	/**
+	 * Players will not be able to sprint if their stamina goes below this.
+	 */
+	public abstract double noSprintStamina(Player playerObject);
+	
 	// -------------------------------------------- //
 	// MULTIPLIER
 	// -------------------------------------------- //
@@ -36,9 +39,8 @@ public interface StaminaMixin extends Mixin
 	public abstract double standStillMultiplier(Player player);
 	
 	
-	public default double getMultiplier(Object playerObject)
+	public default double getMultiplier(Player player)
 	{
-		Player player = IdUtil.getPlayer(playerObject);
 		if (player == null) return 0.0;
 		
 		if (standsStill(player)) return this.standStillMultiplier(player);

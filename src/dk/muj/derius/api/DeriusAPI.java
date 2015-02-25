@@ -174,7 +174,7 @@ public class DeriusAPI
 	 * The amount of millis it will take for this player to fully regen stamina
 	 * @param {long} millis it would take from 0 to max
 	 */
-	public static long staminaRegenTime(Object senderObject)
+	public static long staminaRegenTime(Player senderObject)
 	{
 		return getStaminaMixin().regenTime(senderObject);
 	}
@@ -196,7 +196,7 @@ public class DeriusAPI
 		return getStaminaMixin().standStillMultiplier(player);
 	}
 	
-	public static double getStaminaMultiplier(Object playerObject)
+	public static double getStaminaMultiplier(Player playerObject)
 	{
 		return getStaminaMixin().getMultiplier(playerObject);
 	}
@@ -204,6 +204,11 @@ public class DeriusAPI
 	public static boolean standsStill(Player player)
 	{
 		return getStaminaMixin().standsStill(player);
+	}
+	
+	public static double staminaSprintLimit(Player player)
+	{
+		return getStaminaMixin().noSprintStamina(player);
 	}
 	
 }
