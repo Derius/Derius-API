@@ -275,7 +275,7 @@ public interface Ability extends Registerable
 	 * @param {Object} other parameter used in some abilities
 	 * @return {Object} this object will be passed to onDeactivate for data transferring.
 	 */
-	public Object onActivate(DPlayer p, Object other);
+	public Object onActivate(DPlayer dplayer, Object other);
 	
 	/**
 	 * This is the method called by Derius when your ability
@@ -283,5 +283,5 @@ public interface Ability extends Registerable
 	 * @param {DPlayer} the player to stop using the ability
 	 * @param {Object} object received from onActivate
 	 */
-	public void onDeactivate(DPlayer p, Object other);
+	public void onDeactivate(DPlayer dplayer, Object other);
 }
