@@ -216,11 +216,22 @@ public interface DPlayer
 	/**
 	 * Sets the Cooldown to run out the passed amount of ticks in the future
 	 * @param {int} ticks in the future the cooldown should be set to.
+	 * @deprecated this use millis, we don't use millis anymore.
 	 */
-	public default void setCooldownExpireIn (int ticks)
+	public default void setCooldownExpireIn(int ticks)
 	{
 		long currentTime = System.currentTimeMillis();
-		setCooldownExpire(currentTime+ticks/20*1000);
+		setCooldownExpire(currentTime+ticks*50);
+	}
+	
+	/**
+	 * Sets the Cooldown to run out the passed amount of millis in the future
+	 * @param {int} millis in the future the cooldown should be set to.
+	 */
+	public default void setCooldownExpireInMillis(int millis)
+	{
+		long currentTime = System.currentTimeMillis();
+		setCooldownExpire(currentTime+millis);
 	}
 	
 	/**

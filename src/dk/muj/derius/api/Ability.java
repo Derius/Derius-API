@@ -94,16 +94,27 @@ public interface Ability extends Registerable
 	 * Gets how many ticks this ability will last
 	 * @param {int} the level to check for
 	 * @return {int} amount of ticks, this ability would last.
+	 * @deprecated we use millis now
 	 */
-	public int getDuration(int level);
+	public default int getDuration(int level)
+	{
+		return this.getDurationMillis(level)/50;
+	}
 
+	/**
+	 * Gets how many millis this ability will last
+	 * @param {int} the level to check for
+	 * @return {int} amount of millis, this ability would last.
+	 */
+	public int getDurationMillis(int level);
+	
 	/**
 	 * Each ability can have a different way to calculate the cooldown time.
 	 * We don't know it, but we store the level, which this is depending on.
 	 * This will change the algorithm for this ability.
 	 * @param algorithm
 	 */
-	public void setDurationAlgorithm(TicksLastCalculator algorithm);
+	public void setDurationAlgorithm(MillisLastCalculator algorithm);
 	
 	/**
 	 * Each ability can have a different way to calculate the cooldown time.
@@ -111,7 +122,7 @@ public interface Ability extends Registerable
 	 * This will get the cooldown calculation algorithm for this ability.
 	 * @return {TicksLastCalculator} The algorithm which is being used for this ability.
 	 */
-	public TicksLastCalculator getDurationAlgorithm();
+	public MillisLastCalculator getDurationAlgorithm();
 	
 	// -------------------------------------------- //
 	// FIELD: COOLDOWN
@@ -120,14 +131,33 @@ public interface Ability extends Registerable
 	/**
 	 * Sets how many ticks the cooldown will last.
 	 * @param {int} The ticks it will last
+	 * @deprecated we use millis now
 	 */
-	public void setTicksCooldown(int ticks);
+	public default void setTicksCooldown(int ticks)
+	{
+		this.setMillisCooldown(ticks*50);
+	}
 	
 	/**
 	 * Gets how many ticks the cooldown will last
 	 * @return {int} amount of ticks, the cooldown will be.
+	 * @deprecated we use millis now
 	 */
-	public int getCooldownTicks();
+	public default int getCooldownTicks()
+	{
+		return this.getCooldownMillis()/50;
+	}
+	
+	/**
+	 * Sets how many millis the cooldown will last.
+	 * @param {int} The millis it will last
+	 */
+	public void setMillisCooldown(int millis);
+	/**
+	 * Gets how many millis the cooldown will last
+	 * @return {int} amount of millis, the cooldown will be.
+	 */
+	public int getCooldownMillis();
 	
 	// -------------------------------------------- //
 	// FIELD: STAMINA
