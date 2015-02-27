@@ -6,9 +6,10 @@ import dk.muj.derius.api.DPlayer;
 
 public interface DPlayerEvent
 {
-	public DPlayer getDPlayer();
-	default Player getPlayer()
+	public abstract DPlayer getDPlayer();
+	public default Player getPlayer()
 	{
 		return this.getDPlayer().getPlayer();
 	}
+	
 }

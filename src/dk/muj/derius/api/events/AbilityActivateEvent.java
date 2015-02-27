@@ -62,20 +62,20 @@ public class AbilityActivateEvent extends DeriusEvent implements Cancellable, Ab
 	@Override
 	public boolean equals(Object obj)
 	{		
-		if (obj == null) return false;
+		if (obj == this) return true;
 		if ( ! (obj instanceof AbilityActivateEvent)) return false;
 		AbilityActivateEvent that = (AbilityActivateEvent) obj;
 	
-		if (that.getDPlayer() == this.getDPlayer() && that.getAbility() == this.getAbility()) return true;
+		if (this.getDPlayer() != that.getDPlayer()) return false;
+		if (this.getAbility() != that.getAbility()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override
 	public int hashCode()
 	{
 		int result = 1;
-		
 		int prime = 31;
 		
 		result += this.getDPlayer().hashCode()*prime;

@@ -6,4 +6,5 @@ public interface SkillEvent
 {
 	// Abstract
 	public Skill getSkill();
+	
 }

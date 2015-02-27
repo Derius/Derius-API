@@ -66,9 +66,10 @@ public class PlayerToolUnprepareEvent extends DeriusEvent implements Cancellable
 		if ( ! (obj instanceof PlayerToolUnprepareEvent)) return false;
 		PlayerToolUnprepareEvent that = (PlayerToolUnprepareEvent) obj;
 	
-		if (that.getDPlayer() == this.getDPlayer() && that.getTool() == this.getTool()) return true;
+		if (this.getDPlayer() != that.getDPlayer()) return false;
+		if (this.getTool() != that.getTool()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override

@@ -6,4 +6,5 @@ public interface AbilityEvent
 {
 	// Abstract
 	public Ability getAbility();
+	
 }

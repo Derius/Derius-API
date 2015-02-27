@@ -72,14 +72,16 @@ public class PlayerExpAddEvent extends DeriusEvent implements Cancellable, DPlay
 	@Override
 	public boolean equals(Object obj)
 	{		
-		if (obj == null) return false;
+		if (obj == this) return true;
 		if ( ! (obj instanceof PlayerExpAddEvent)) return false;
 		PlayerExpAddEvent that = (PlayerExpAddEvent) obj;
 	
-		// We can't use the amount in equals & hashcode, because it can be changed and this is used as a hashmap key.
-		if (that.getSkill() == this.getSkill() && this.getDPlayer() == that.getDPlayer()) return true;
+	
+		if (this.getSkill() != that.getSkill()) return false;
+		if (this.getDPlayer() != that.getDPlayer()) return false;
+		if (this.getExpAmount() != that.getExpAmount()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -88,7 +90,7 @@ public class PlayerExpAddEvent extends DeriusEvent implements Cancellable, DPlay
 		int result = 1;
 		int prime = 31;
 		
-		// We can't use the amount in equals & hashcode, because it can be changed and this is used as a hashmap key.
+		result += this.getExpAmount()*prime;
 		result += this.getSkill().hashCode()*prime;
 		result += this.getDPlayer().hashCode()*prime;
 		

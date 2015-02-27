@@ -46,9 +46,9 @@ public class SpecialisationSlotEvent extends DeriusEvent implements DPlayerEvent
 		if ( ! (obj instanceof PlayerExpAddEvent)) return false;
 		SpecialisationSlotEvent that = (SpecialisationSlotEvent) obj;
 	
-		if (this.getDPlayer() == that.getDPlayer()) return true;
+		if (this.getDPlayer() != that.getDPlayer()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override

@@ -66,16 +66,16 @@ public class PlayerToolPrepareEvent extends DeriusEvent implements Cancellable, 
 		if ( ! (obj instanceof PlayerToolPrepareEvent)) return false;
 		PlayerToolPrepareEvent that = (PlayerToolPrepareEvent) obj;
 	
-		if (that.getDPlayer() == this.getDPlayer() && that.getTool() == this.getTool()) return true;
+		if (this.getDPlayer() != that.getDPlayer()) return false;
+		if (this.getTool() != that.getTool()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override
 	public int hashCode()
 	{
 		int result = 1;
-		
 		int prime = 31;
 		
 		result += this.getDPlayer().hashCode()*prime;

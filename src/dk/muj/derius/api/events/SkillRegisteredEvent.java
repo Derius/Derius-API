@@ -59,21 +59,22 @@ public class SkillRegisteredEvent extends DeriusEvent implements Cancellable, Sk
 	@Override
 	public boolean equals(Object obj)
 	{		
-		if (obj == null) return false;
+		if (obj == this) return true;
 		if ( ! (obj instanceof SkillRegisteredEvent)) return false;
 		SkillRegisteredEvent that = (SkillRegisteredEvent) obj;
 	
-		if (that.getSkill() == this.getSkill()) return true;
+		if (this.getSkill() != that.getSkill()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override
 	public int hashCode()
 	{
 		int result = 1;
+		int prime = 31;
 		
-		result += this.getSkill().hashCode();
+		result += this.getSkill().hashCode()*prime;
 		
 		return result;
 	}

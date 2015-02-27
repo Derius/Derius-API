@@ -41,6 +41,10 @@ public abstract class DeriusEvent extends Event implements Runnable
 		this.postRun();
 	}
 	
+	// Pre & post run
+	public void preRun() {};
+	public void postRun() {};
+	
 	// -------------------------------------------- //
 	// SMART RUN
 	// -------------------------------------------- //
@@ -60,11 +64,5 @@ public abstract class DeriusEvent extends Event implements Runnable
 		}
 		return true;
 	}
-	
-	// -------------------------------------------- //
-	// PRE & POST RUN
-	// -------------------------------------------- //
-	
-	public void preRun() {};
-	public void postRun() {};
+
 }

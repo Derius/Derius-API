@@ -56,20 +56,19 @@ public class AbilityRegisteredEvent extends DeriusEvent implements Cancellable, 
 	@Override
 	public boolean equals(Object obj)
 	{		
-		if (obj == null) return false;
+		if (obj == this) return true;
 		if ( ! (obj instanceof AbilityRegisteredEvent)) return false;
 		AbilityRegisteredEvent that = (AbilityRegisteredEvent) obj;
 	
-		if (that.getAbility() == this.getAbility()) return true;
+		if (this.getAbility() != that.getAbility()) return false;
 		
-		return false;
+		return true;
 	}
 	
 	@Override
 	public int hashCode()
 	{
 		int result = 1;
-		
 		int prime = 31;
 		
 		result += this.getAbility().hashCode()*prime;
