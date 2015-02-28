@@ -1,8 +1,5 @@
 package dk.muj.derius.api;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.massivecraft.massivecore.util.Txt;
 
 public enum VerboseLevel
@@ -23,6 +20,24 @@ public enum VerboseLevel
 	;
 	
 	// -------------------------------------------- //
+	// CONSTRUCT
+	// -------------------------------------------- //
+	
+	private VerboseLevel()
+	{
+		
+	}
+	
+	// -------------------------------------------- //
+	// NICER NAMES
+	// -------------------------------------------- //
+	
+	public int priority()
+	{
+		return this.ordinal();
+	}
+	
+	// -------------------------------------------- //
 	// ORDER
 	// -------------------------------------------- //
 	
@@ -31,16 +46,17 @@ public enum VerboseLevel
 	 * @param {boolean} is this included
 	 * @return {List<VerbooseLevel>} all VerbooseLevels of higher priority than this.
 	 */
-	public List<VerboseLevel> getHigher(boolean inclusive)
+	public VerboseLevel[] getHigher(boolean inclusive)
 	{
-		List<VerboseLevel> ret = new ArrayList<>();
+		VerboseLevel[] values = values();
 		
-		for (VerboseLevel level : VerboseLevel.values())
+		int offset = this.ordinal() + (inclusive ? 0 : 1);
+		VerboseLevel[] ret = new VerboseLevel[values.length - offset];
+		
+		for (int i = 0; i < ret.length; i++)
 		{
-			if (level.ordinal() > this.ordinal()) ret.add(level); 
+			ret[i] = values[offset + i];
 		}
-		
-		if (inclusive) ret.add(this);
 		
 		return ret;
 	}
@@ -50,16 +66,15 @@ public enum VerboseLevel
 	 * @param {boolean} is this included
 	 * @return {List<VerbooseLevel>} all VerbooseLevels of lower priority.
 	 */
-	public List<VerboseLevel> getLower(boolean inclusive)
+	public VerboseLevel[] getLower(boolean inclusive)
 	{
-		List<VerboseLevel> ret = new ArrayList<>();
+		VerboseLevel[] values = values();
+		VerboseLevel[] ret = new VerboseLevel[this.ordinal() + (inclusive ? 1 : 0)];
 		
-		for (VerboseLevel level : VerboseLevel.values())
+		for (int i = 0; i < ret.length; i++)
 		{
-			if (level.ordinal() < this.ordinal()) ret.add(level); 
+			ret[i] = values[i];
 		}
-		
-		if (inclusive) ret.add(this);
 		
 		return ret;
 	}
@@ -73,7 +88,7 @@ public enum VerboseLevel
 	public boolean includes(VerboseLevel level)
 	{
 		if (level == null) return false;
-		return level.ordinal() >= this.ordinal();
+		return level.priority() >= this.priority();
 	}
 	
 	/**
@@ -85,15 +100,6 @@ public enum VerboseLevel
 	public boolean excludes(VerboseLevel level)
 	{
 		return ! this.includes(level);
-	}
-	
-	// -------------------------------------------- //
-	// CONSTRUCT
-	// -------------------------------------------- //
-	
-	private VerboseLevel()
-	{
-		
 	}
 	
 	// -------------------------------------------- //

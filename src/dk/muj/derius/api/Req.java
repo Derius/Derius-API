@@ -1,20 +1,23 @@
 package dk.muj.derius.api;
 
-import org.bukkit.command.CommandSender;
 
-public interface Req extends com.massivecraft.massivecore.cmd.req.Req
+public interface Req
 {
 	// -------------------------------------------- //
 	// ABSTRACT
 	// -------------------------------------------- //
 	
 	// SKill requirements
-	public abstract boolean apply(CommandSender sender, Skill skill);
-	public abstract  String createErrorMessage(CommandSender sender, Skill skill);
+	public abstract boolean apply(DPlayer dplayer, Skill skill);
+	public abstract  String createErrorMessage(DPlayer dplayer, Skill skill);
 	
 	// Ability requirements
-	public abstract  boolean apply(CommandSender sender, Ability ability);
-	public abstract  String createErrorMessage(CommandSender sender, Ability ability);
+	public abstract  boolean apply(DPlayer dplayer, Ability ability);
+	public abstract  String createErrorMessage(DPlayer dplayer, Ability ability);
+	
+	// Default
+	public abstract  boolean apply(DPlayer dplayer);
+	public abstract  String createErrorMessage(DPlayer dplayer);
 	
 	// Verboose level
 	public abstract VerboseLevel getVerboseLevel();

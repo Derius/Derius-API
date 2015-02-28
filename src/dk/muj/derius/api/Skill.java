@@ -83,7 +83,7 @@ public interface Skill extends Registerable
 	 * @param {Objet} object for a player
 	 * @return {String} how the player should see the description
 	 */
-	public String getDisplayedDescription(Object watcherObject);
+	public String getDisplayedDescription(DPlayer dplayer);
 	
 	/**
 	 * Returns a colorcode name
@@ -91,7 +91,7 @@ public interface Skill extends Registerable
 	 * @param {Objet} object for a player
 	 * @return {String} The colorcode for the txt.parse method.
 	 */
-	public String getDisplayName ( Object watcherObject);
+	public String getDisplayName(DPlayer dplayer);
 	
 	// -------------------------------------------- //
 	// FIELD: EARN EXP DESC

@@ -74,32 +74,21 @@ public interface Ability extends Registerable
 	/**
 	 * Gets the name & description, as it would be displayed
 	 * to the passed player
-	 * @param {Object} player (id/uuid/mplayer/bukkit-player) to see description
+	 * @param {DPlayer} player to see description
 	 * @return {String} how the player should see the description
 	 */
-	public String getDisplayedDescription(Object watcherObject);
+	public String getDisplayedDescription(DPlayer dplayer);
 	
 	/**
 	 * Gets the name  as it would be displayed to the passed player
-	 * @param {Object} player (id/uuid/mplayer/bukkit-player) to see description
+	 * @param {DPlayer} player to see description
 	 * @return {String} how the player should see the description
 	 */
-	public String getDisplayName(Object watcherObject);
+	public String getDisplayName(DPlayer dplayer);
 	
 	// -------------------------------------------- //
 	// FIELD: DURATION
 	// -------------------------------------------- //
-
-	/**
-	 * Gets how many ticks this ability will last
-	 * @param {int} the level to check for
-	 * @return {int} amount of ticks, this ability would last.
-	 * @deprecated we use millis now
-	 */
-	public default int getDuration(int level)
-	{
-		return this.getDurationMillis(level)/50;
-	}
 
 	/**
 	 * Gets how many millis this ability will last
@@ -127,27 +116,7 @@ public interface Ability extends Registerable
 	// -------------------------------------------- //
 	// FIELD: COOLDOWN
 	// -------------------------------------------- //
-	
-	/**
-	 * Sets how many ticks the cooldown will last.
-	 * @param {int} The ticks it will last
-	 * @deprecated we use millis now
-	 */
-	public default void setTicksCooldown(int ticks)
-	{
-		this.setMillisCooldown(ticks*50);
-	}
-	
-	/**
-	 * Gets how many ticks the cooldown will last
-	 * @return {int} amount of ticks, the cooldown will be.
-	 * @deprecated we use millis now
-	 */
-	public default int getCooldownTicks()
-	{
-		return this.getCooldownMillis()/50;
-	}
-	
+
 	/**
 	 * Sets how many millis the cooldown will last.
 	 * @param {int} The millis it will last
@@ -160,7 +129,7 @@ public interface Ability extends Registerable
 	public int getCooldownMillis();
 	
 	// -------------------------------------------- //
-	// FIELD: STAMINA
+	// FIELD: STAMINA USAGE
 	// -------------------------------------------- //
 	
 	/**
@@ -174,6 +143,24 @@ public interface Ability extends Registerable
 	 * @return {double} the amount of stamina
 	 */
 	public double getStaminaUsage();
+	
+	// -------------------------------------------- //
+	// FIELD: STAMINA MULTIPLIER
+	// -------------------------------------------- //
+	
+	/**
+	 * Sets the multiplier for stamina regenerated while this ability is activated.
+	 * This only works for active abilities.
+	 * @param {double} the stamina multiplier.
+	 */
+	public void setStaminaMultiplier(double stamina);
+	
+	/**
+	 * Gets the multiplier for stamina regenerated while this ability is activated.
+	 * This only works for active abilities.
+	 * @return {double} the stamina multiplier
+	 */
+	public double getStaminaMultiplier();
 	
 	// -------------------------------------------- //
 	// FIELD TYPE:
