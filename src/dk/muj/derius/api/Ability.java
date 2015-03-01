@@ -119,14 +119,23 @@ public interface Ability extends Registerable
 
 	/**
 	 * Sets how many millis the cooldown will last.
+	 * Use a negative number to say this ability won't effect cooldown.
 	 * @param {int} The millis it will last
 	 */
-	public void setMillisCooldown(int millis);
+	public void setCooldownMillis(int millis);
+	
 	/**
-	 * Gets how many millis the cooldown will last
+	 * Gets how many millis the cooldown will last.
+	 * Use a negative number to say this ability won't effect cooldown.
 	 * @return {int} amount of millis, the cooldown will be.
 	 */
 	public int getCooldownMillis();
+	
+	/**
+	 * This can be symbolised by setting cooldwon to be negative.
+	 * @return {boolean} true if this ability affects cooldown.
+	 */
+	public boolean hasCooldown();
 	
 	// -------------------------------------------- //
 	// FIELD: STAMINA USAGE
