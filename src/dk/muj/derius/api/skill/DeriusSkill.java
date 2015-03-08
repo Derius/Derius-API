@@ -33,33 +33,33 @@ public abstract class DeriusSkill implements Skill
 	// -------------------------------------------- //
 	
 	// Enabled
-	boolean enabled = true;
+	private boolean enabled = true;
 	@Override public boolean isEnabled() { return enabled; }
 	@Override public void setEnabled(boolean enabled) { this.enabled = enabled; }
 	@Override public boolean getEnabled() { return this.enabled; }
 	
 	// Abilities
-	transient List<Ability> abilities = new CopyOnWriteArrayList<>();
+	private transient List<Ability> abilities = new CopyOnWriteArrayList<>();
 	@Override public List<Ability> getAbilities() { return this.abilities; }
 	
 	// -------------------------------------------- //
 	// FIELDS: DESCRIPTIVE
 	// -------------------------------------------- //
 	
-	String name;
+	private String name;
 	@Override public String getName() { return name; }
 	@Override public void setName(String newName) { this.name = newName; }
 	
-	String desc = "";
+	private String desc = "";
 	@Override public String getDesc() { return desc; }
 	@Override public void setDesc(String newDescription) { this.desc = newDescription; }
 	
-	List<String> earnExpDescs = new CopyOnWriteArrayList<String>();
+	private List<String> earnExpDescs = new CopyOnWriteArrayList<String>();
 	@Override public List<String> getEarnExpDescs() { return new ArrayList<>(earnExpDescs); }
 	@Override public void setEarnExpDescs(List<String> descs) { this.earnExpDescs = descs; }
 	@Override public void addEarnExpDescs(String... desc) { this.earnExpDescs.addAll(Arrays.asList(desc)); }
 	
-	Material icon = Material.AIR;
+	private Material icon = Material.AIR;
 	@Override public Material getIcon() { return this.icon; }
 	@Override public void setIcon(Material icon) { this.icon = icon; }
 	
@@ -67,28 +67,28 @@ public abstract class DeriusSkill implements Skill
 	// FIELDS: CONFIGURITIVE
 	// -------------------------------------------- //
 	
-	int softCap = 1000;
+	private int softCap = 1000;
 	@Override public int getSoftCap() { return  this.softCap; }
 	@Override public void setSoftCap(int cap) { this.softCap = cap; }
 	
-	int hardCap = 2000;
+	private int hardCap = 2000;
 	@Override public int getHardCap() { return  this.hardCap; }
 	@Override public void setHardtCap(int cap) { this.hardCap = cap; }
 	
-	boolean spAutoAssigned = false;
+	private boolean spAutoAssigned = false;
 	@Override public boolean isSpAutoAssigned() { return this.spAutoAssigned; }
 	@Override public void setSpAutoAssiged(boolean assigned) { this.spAutoAssigned = assigned; }
 	
-	boolean spBlacklisted = false;
+	private boolean spBlacklisted = false;
 	@Override public boolean isSpBlackListed() { return this.spBlacklisted; }
 	@Override public void setSpBlackListed(boolean assigned) { this.spAutoAssigned = assigned; }
 	
-	WorldExceptionSet worldsEarn = new WorldExceptionSet();
+	private WorldExceptionSet worldsEarn = new WorldExceptionSet();
 	@Override public WorldExceptionSet getWorldsEarn() { return worldsEarn; }
 	@Override public void setWorldsEarn(WorldExceptionSet worldsEarn) { this.worldsEarn = worldsEarn; }
 	
 	// Configuration
-	JsonObject configuration = new JsonObject();
+	private JsonObject configuration = new JsonObject();
 	@Override public JsonObject getConfiguration() { return this.configuration; }
 	@Override public void setConfiguration(JsonObject conf) { this.configuration = conf; }
 	
@@ -97,19 +97,19 @@ public abstract class DeriusSkill implements Skill
 	// -------------------------------------------- //
 	
 	// See requirements
-	transient List<Req> seeRequirements = new CopyOnWriteArrayList<Req>();
+	private transient List<Req> seeRequirements = new CopyOnWriteArrayList<Req>();
 	@Override public List<Req> getSeeRequirements() { return this.seeRequirements; }
 	@Override public void setSeeRequirements(List<Req> requirements) { this.seeRequirements = requirements; }
 	@Override public void addSeeRequirements(Req... requirements) { this.seeRequirements.addAll(Arrays.asList(requirements)); }
 	
 	// Learn requirements
-	transient List<Req> learnRequirements = new CopyOnWriteArrayList<Req>();
+	private transient List<Req> learnRequirements = new CopyOnWriteArrayList<Req>();
 	@Override public List<Req> getLearnRequirements() { return this.learnRequirements; }
 	@Override public void setLearnRequirements(List<Req> requirements) { this.learnRequirements = requirements; }
 	@Override public void addLearnRequirements(Req... requirements) { this.learnRequirements.addAll(Arrays.asList(requirements)); }
 	
 	// Specialise requirements
-	transient List<Req> specialiseRequirements = new CopyOnWriteArrayList<Req>();
+	private transient List<Req> specialiseRequirements = new CopyOnWriteArrayList<Req>();
 	@Override public List<Req> getSpecialiseRequirements() { return this.specialiseRequirements; }
 	@Override public void setSpecialiseRequirements(List<Req> requirements) { this.specialiseRequirements = requirements; }
 	@Override public void addSpecialiseRequirements(Req... requirements) { this.specialiseRequirements.addAll(Arrays.asList(requirements)); }
@@ -119,7 +119,7 @@ public abstract class DeriusSkill implements Skill
 	// -------------------------------------------- //
 	
 	// Lambda, This is the default algorithm
-	transient LvlStatusCalculator expToLvlStatus = (long exp) -> 	
+	private transient LvlStatusCalculator expToLvlStatus = (long exp) -> 	
 	{	
 		int level = 0, nextLvlExp;
 		for(nextLvlExp = 1024; nextLvlExp < exp; level++)
