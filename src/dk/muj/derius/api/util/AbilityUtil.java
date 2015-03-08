@@ -25,6 +25,15 @@ public final class AbilityUtil
 	}
 	
 	// -------------------------------------------- //
+	// CONSTANTS
+	// -------------------------------------------- //
+	
+	/**
+	 * The singletone object that should be returned when activation of an ability fails.
+	 */
+	public static final Object CANCEL = new Object();
+	
+	// -------------------------------------------- //
 	// REQUIREMENTS
 	// -------------------------------------------- //
 	
@@ -94,14 +103,14 @@ public final class AbilityUtil
 		Validate.notNull(verboseLevel, "verboselevel mustn't be null");
 		
 		// CHECKS
-		if ( ! AbilityUtil.canPlayerActivateAbility(dplayer, ability, verboseLevel)) return null;
+		if ( ! AbilityUtil.canPlayerActivateAbility(dplayer, ability, verboseLevel)) return CANCEL;
 		
 		// STAMINA
 		dplayer.takeStamina(ability.getStaminaUsage());
 		
 		// EVENT
 		AbilityActivateEvent event = new AbilityActivateEvent(ability, dplayer);
-		if ( ! event.runEvent()) return null;
+		if ( ! event.runEvent()) return CANCEL;
 		
 		// ACTIVATE
 		if (ability.getType() == AbilityType.PASSIVE)
@@ -152,7 +161,7 @@ public final class AbilityUtil
 		Validate.isTrue(ability.getType() == AbilityType.PASSIVE, "abilitytype must be passive");
 	
 		final Object obj = ability.onActivate(dplayer, other);
-		
+		if (obj == CANCEL) return CANCEL;
 		ability.onDeactivate(dplayer, other);
 		
 		if(ability.hasCooldown())
@@ -166,7 +175,7 @@ public final class AbilityUtil
 	private static Object activateActiveAbility(final DPlayer dplayer, final Ability ability, Object other)
 	{
 		Validate.isTrue(ability.getType() == AbilityType.ACTIVE, "abilitytype must be active");
-		if (dplayer.hasActivatedAny()) return null;
+		if (dplayer.hasActivatedAny()) return CANCEL;
 
 		dplayer.setActivatedAbility(Optional.of(ability));
 		
@@ -174,7 +183,7 @@ public final class AbilityUtil
 
 		final Object obj = ability.onActivate(dplayer, other);
 		int duration = ability.getDurationMillis(dplayer.getLvl(ability.getSkill()));
-		
+		if (obj == CANCEL) return CANCEL;
 		ScheduledDeactivate sd = new ScheduledDeactivate(dplayer, duration, other);
 		sd.schedule();
 		
