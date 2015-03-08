@@ -4,8 +4,8 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-import dk.muj.derius.api.DPlayer;
 import dk.muj.derius.api.events.DeriusEvent;
+import dk.muj.derius.api.player.DPlayer;
 
 public class PlayerStaminaUpdateEvent extends DeriusEvent implements Cancellable, DPlayerEvent
 {

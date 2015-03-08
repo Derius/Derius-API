@@ -1,17 +1,37 @@
-package dk.muj.derius.api;
+package dk.muj.derius.api.skill;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.bukkit.Material;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivecore.Registerable;
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
+import com.massivecraft.massivecore.xlib.gson.JsonObject;
 
-import dk.muj.derius.api.Ability.AbilityType;
+import dk.muj.derius.api.Req;
+import dk.muj.derius.api.ability.Ability;
+import dk.muj.derius.api.ability.Ability.AbilityType;
+import dk.muj.derius.api.lvl.LvlStatus;
+import dk.muj.derius.api.lvl.LvlStatusCalculator;
+import dk.muj.derius.api.player.DPlayer;
 
 public interface Skill extends Registerable
 {
+	
+	// -------------------------------------------- //
+	// ID
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets the id of the skill. This id is only used by plugins
+	 * & is never seen by the player/user.
+	 * MUST be unique & should never be changed
+	 * This should be lowercase.
+	 * @return {String} the skills unique id.
+	 */
+	public String getId();
 	
 	// -------------------------------------------- //
 	// REGISTER
@@ -22,6 +42,18 @@ public interface Skill extends Registerable
 	 * This should be done on server startup.
 	 */
 	public void register();
+	
+	// -------------------------------------------- //
+	// DATABASE
+	// -------------------------------------------- //
+	
+	/**
+	 * Used for database stuff. You should just extend DeriusSkill
+	 * and not care about this method.
+	 */
+	public Skill load(Skill that);
+	
+	public Plugin getPlugin();
 	
 	// -------------------------------------------- //
 	// FIELD: ENABLED
@@ -40,6 +72,13 @@ public interface Skill extends Registerable
 	 * @param {boolean} true if enabled
 	 */
 	public void setEnabled(boolean enabled);
+	
+	/**
+	 * Gets the field value of enabled.
+	 * Even if this is true it might be disabled for other reasons.
+	 * @return {boolaen} field value of enabled
+	 */
+	public boolean getEnabled();
 	
 	// -------------------------------------------- //
 	// FIELD: NAME
@@ -231,6 +270,26 @@ public interface Skill extends Registerable
 	public void setSpBlackListed(boolean assiged);
 	
 	// -------------------------------------------- //
+	// FIELD: CONFIGURATION
+	// -------------------------------------------- //
+	
+	/**
+	 * Get a custom JsonObject configuration.
+	 * This can be used for the user to configure each skill or store data about the skill.
+	 * Make sure you don't override someone elses data.
+	 * @return {JsonObject} this skills configuration.
+	 */
+	public JsonObject getConfiguration();
+	
+	/**
+	 * Set a custom JsonObject configuration.
+	 * This can be used for the user to configure each skill or store data about the skill.
+	 * Make sure you don't override someone elses data.
+	 * @param {JsonObject} this skills configuration.
+	 */
+	public void setConfiguration(JsonObject conf);
+	
+	// -------------------------------------------- //
 	// FIELD: SEE REQUIREMENTS
 	// -------------------------------------------- //
 	
@@ -332,18 +391,5 @@ public interface Skill extends Registerable
 	 * @return {List<Ability>} all abilities related to this skill
 	 */
 	public abstract List<Ability> getAbilities();
-	
-	// -------------------------------------------- //
-	// ABSTRACT
-	// -------------------------------------------- //
-	
-	/**
-	 * Gets the id of the skill. This id is only used by plugins
-	 * & is never seen by the player/user.
-	 * MUST be unique & should never be changed
-	 * This should be lowercase.
-	 * @return {String} the skills unique id.
-	 */
-	public String getId();
 	
 }

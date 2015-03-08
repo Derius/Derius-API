@@ -7,12 +7,18 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivecore.ps.PS;
+import com.massivecraft.massivecore.xlib.gson.Gson;
 
+import dk.muj.derius.api.ability.Ability;
+import dk.muj.derius.api.config.DLang;
 import dk.muj.derius.api.mixin.BlockMixin;
 import dk.muj.derius.api.mixin.MaxLevelMixin;
 import dk.muj.derius.api.mixin.StaminaMixin;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
 
 public class DeriusAPI
 {
@@ -21,10 +27,16 @@ public class DeriusAPI
 	// -------------------------------------------- //
 	
 	// This field is set using reflection
-	private static final Derius core = null;
-	public static Derius getCore() { return core; }
+	private static final Derius CORE = null;
+	public static Derius getCore() { return CORE; }
+	public static Derius getCoreEnsured() { ensureHasCore(); return getCore(); }
 	
-	private static void ensureHasCore() { if (core == null) throw new RuntimeException("core is null"); }
+	private static void ensureHasCore() { if (CORE == null) throw new RuntimeException("core is null"); }
+	
+	private static DLang DLANG;
+	public static DLang getDLang() { return DLANG; }
+	public static void setDLang(DLang lang) { DLANG = lang; }
+	
 	// -------------------------------------------- //
 	// FIELDS: MIXIN
 	// -------------------------------------------- //
@@ -42,6 +54,15 @@ public class DeriusAPI
 	public static void setStaminaMixin (StaminaMixin val) { staminaMixin = val; }
 
 	// -------------------------------------------- //
+	// DATABASE
+	// -------------------------------------------- //
+
+	public static Gson getGson(Plugin plugin)
+	{
+		return getCoreEnsured().getGson(plugin);
+	}
+	
+	// -------------------------------------------- //
 	// DPLAYERS
 	// -------------------------------------------- //
 	
@@ -51,8 +72,7 @@ public class DeriusAPI
 	 */
 	public static Collection< ? extends DPlayer> getAllDPlayers()
 	{
-		ensureHasCore();
-		return getCore().getAllDPlayers();
+		return getCoreEnsured().getAllDPlayers();
 	}
 	
 	/**
@@ -66,8 +86,7 @@ public class DeriusAPI
 	 */
 	public static DPlayer getDPlayer(Object senderObject)
 	{
-		ensureHasCore();
-		return getCore().getDPlayer(senderObject);
+		return getCoreEnsured().getDPlayer(senderObject);
 	}
 	
 	// -------------------------------------------- //
@@ -80,7 +99,6 @@ public class DeriusAPI
 	 */
 	public static Collection< ? extends Skill> getAllSkills()
 	{
-		ensureHasCore();
 		return getCore().getAllSkills();
 	}
 	
@@ -91,8 +109,16 @@ public class DeriusAPI
 	 */
 	public static Skill getSkill(String id)
 	{
-		ensureHasCore();
-		return getCore().getSkill(id);
+		return getCoreEnsured().getSkill(id);
+	}
+
+	/**
+	 * Registers a skill into the system.
+	 * @param {Skill} skill to register.
+	 */
+	public static void registerSkill(Skill skill)
+	{
+		getCoreEnsured().registerSkill(skill);
 	}
 	
 	// -------------------------------------------- //
@@ -105,8 +131,7 @@ public class DeriusAPI
 	 */
 	public static Collection< ? extends Ability> getAllAbilities()
 	{
-		ensureHasCore();
-		return getCore().getAllAbilities();
+		return getCoreEnsured().getAllAbilities();
 	}
 	
 	/**
@@ -116,8 +141,35 @@ public class DeriusAPI
 	 */
 	public static Ability getAbility(String id)
 	{
-		ensureHasCore();
-		return getCore().getAbility(id);
+		return getCoreEnsured().getAbility(id);
+	}
+	
+	public static void registerAbility(Ability ability)
+	{
+		getCoreEnsured().registerAbility(ability);
+	}
+	
+	// -------------------------------------------- //
+	// SCHEDULED DEACTIVATE
+	// -------------------------------------------- //
+	
+	/**
+	 * Checks if a scheduled deactive is scheduled yet.
+	 * @param {ScheduledDeactivate} scheduled deactivate to check for.
+	 * @return {boolean} true is scheduled.
+	 */
+	public static boolean isDeactivateScheduled(ScheduledDeactivate sd)
+	{
+		return getCoreEnsured().isScheduled(sd);
+	}
+	
+	/**
+	 * Scheduled a scheduled deactivate
+	 * @param {ScheduledDeactivate} scheduled deactivate to schedule.
+	 */
+	public static void scheduleDeactivate(ScheduledDeactivate sd)
+	{
+		getCoreEnsured().schedule(sd);
 	}
 	
 	// -------------------------------------------- //
@@ -210,5 +262,5 @@ public class DeriusAPI
 	{
 		return getStaminaMixin().noSprintStamina(player);
 	}
-	
+
 }

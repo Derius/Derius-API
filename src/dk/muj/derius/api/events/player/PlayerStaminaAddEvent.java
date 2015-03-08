@@ -3,7 +3,7 @@ package dk.muj.derius.api.events.player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-import dk.muj.derius.api.DPlayer;
+import dk.muj.derius.api.player.DPlayer;
 
 /**
  * This event is thrown when stamina is added to a player

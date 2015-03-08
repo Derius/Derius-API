@@ -1,4 +1,4 @@
-package dk.muj.derius.api;
+package dk.muj.derius.api.lvl;
 
 import java.util.function.Function;
 

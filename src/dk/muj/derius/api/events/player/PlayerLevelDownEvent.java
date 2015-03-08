@@ -3,10 +3,10 @@ package dk.muj.derius.api.events.player;
 import org.apache.commons.lang.Validate;
 import org.bukkit.event.HandlerList;
 
-import dk.muj.derius.api.DPlayer;
-import dk.muj.derius.api.Skill;
 import dk.muj.derius.api.events.DeriusEvent;
 import dk.muj.derius.api.events.SkillEvent;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
 
 public class PlayerLevelDownEvent extends DeriusEvent implements SkillEvent, DPlayerEvent
 {

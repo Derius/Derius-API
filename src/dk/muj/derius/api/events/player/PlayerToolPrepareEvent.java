@@ -5,8 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-import dk.muj.derius.api.DPlayer;
 import dk.muj.derius.api.events.DeriusEvent;
+import dk.muj.derius.api.player.DPlayer;
 
 public class PlayerToolPrepareEvent extends DeriusEvent implements Cancellable, DPlayerEvent
 {

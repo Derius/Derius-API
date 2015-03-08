@@ -2,7 +2,7 @@ package dk.muj.derius.api.events.player;
 
 import org.bukkit.entity.Player;
 
-import dk.muj.derius.api.DPlayer;
+import dk.muj.derius.api.player.DPlayer;
 
 public interface DPlayerEvent
 {

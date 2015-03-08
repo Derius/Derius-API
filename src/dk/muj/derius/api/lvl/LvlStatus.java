@@ -1,6 +1,6 @@
-package dk.muj.derius.api;
+package dk.muj.derius.api.lvl;
 
-import java.util.Optional;
+import java.util.OptionalInt;
 
 import javax.annotation.concurrent.Immutable;
 
@@ -32,10 +32,10 @@ public interface LvlStatus
 	public LvlStatus setLvl (int level);
 	
 
-	public Optional<Integer> getExp ();
-	public LvlStatus setExp (Optional<Integer>  exp);
+	public OptionalInt getExp ();
+	public LvlStatus withExp (OptionalInt  exp);
 	
 
-	public Optional<Integer>  getExpToNextLvl ();
-	public LvlStatus setExpToNextLvl (Optional<Integer>  expToNextLvl);
+	public OptionalInt  getExpToNextLvl ();
+	public LvlStatus withExpToNextLvl (OptionalInt  expToNextLvl);
 }

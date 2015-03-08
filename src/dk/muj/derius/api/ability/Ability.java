@@ -1,12 +1,29 @@
-package dk.muj.derius.api;
+package dk.muj.derius.api.ability;
 
 import java.util.List;
 
 import com.massivecraft.massivecore.Registerable;
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
 
+import dk.muj.derius.api.MillisLastCalculator;
+import dk.muj.derius.api.Req;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
+
 public interface Ability extends Registerable
 {
+	// -------------------------------------------- //
+	// ID
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets the id of the ability. This id is only used by plugins
+	 * & is never seen by the player/user.
+	 * MUST be unique & should never be changed
+	 * @return {String} the abilities unique id.
+	 */
+	public String getId();
+	
 	// -------------------------------------------- //
 	// REGISTER
 	// -------------------------------------------- //
@@ -18,11 +35,22 @@ public interface Ability extends Registerable
 	public void register();
 	
 	// -------------------------------------------- //
+	// DATABASE
+	// -------------------------------------------- //
+	
+	/**
+	 * Used for database stuff. You should just extend DeriusSkill
+	 * and not care about this method.
+	 */
+	public Ability load(Ability that);
+	
+	// -------------------------------------------- //
 	// FIELD: ENABLED
 	// -------------------------------------------- //
 	
 	/**
-	 * Tells if this skill is enabled.
+	 * Tells if this skill is enabled, is is also disabled if it's skill is disabled.
+	 * To check the value of the field use Ability#getEnabled.
 	 * If not players can't use it AT ALL.
 	 * @return {boolean} true if skill is enabled
 	 */
@@ -34,6 +62,13 @@ public interface Ability extends Registerable
 	 * @param {boolean} true if enabled
 	 */
 	public void setEnabled(boolean enabled);
+	
+	/**
+	 * Gets the field value of enabled.
+	 * This ability might still be disabled even if true is returned.
+	 * @return {boolean} field value of enabled
+	 */
+	public boolean getEnabled();
 	
 	// -------------------------------------------- //
 	// FIELD: NAME
@@ -275,14 +310,6 @@ public interface Ability extends Registerable
 	 * @return {Skill} the skill associated with this ability
 	 */
 	public Skill getSkill();
-	
-	/**
-	 * Gets the id of the ability. This id is only used by plugins
-	 * & is never seen by the player/user.
-	 * MUST be unique & should never be changed
-	 * @return {String} the abilities unique id.
-	 */
-	public String getId();
 	
 	/**
 	 * Gets a description based on passed level

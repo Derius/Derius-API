@@ -4,9 +4,9 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-import dk.muj.derius.api.Ability;
-import dk.muj.derius.api.DPlayer;
+import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.events.player.DPlayerEvent;
+import dk.muj.derius.api.player.DPlayer;
 
 public class AbilityActivateEvent extends DeriusEvent implements Cancellable, AbilityEvent, DPlayerEvent
 {

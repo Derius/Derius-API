@@ -2,8 +2,27 @@ package dk.muj.derius.api;
 
 import java.util.Collection;
 
+import org.bukkit.plugin.Plugin;
+
+import com.massivecraft.massivecore.xlib.gson.Gson;
+
+import dk.muj.derius.api.ability.Ability;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
+
 public interface Derius
 {
+	// -------------------------------------------- //
+	// DATABASE
+	// -------------------------------------------- //
+	
+	/**
+	 * Get gson for passed plugin
+	 * @param  @nullable {Plugin}to get gson for.
+	 * @return {Gson} gson for that plugin or for the core if plugin had no gson.
+	 */
+	public Gson getGson(Plugin plugin);
+	
 	// -------------------------------------------- //
 	// DPLAYERS
 	// -------------------------------------------- //
@@ -42,6 +61,12 @@ public interface Derius
 	 */
 	public abstract Skill getSkill(String id);
 	
+	/**
+	 * Registers a skill into the system.
+	 * @param {Skill} skill to register.
+	 */
+	public abstract void registerSkill(Skill skill);
+	
 	// -------------------------------------------- //
 	// ABILITIES
 	// -------------------------------------------- //
@@ -58,5 +83,28 @@ public interface Derius
 	 * @return {Ability} the ability
 	 */
 	public abstract Ability getAbility(String id);
+	
+	/**
+	 * Registers an ability into the system.
+	 * @param {Ability} ability to register.
+	 */
+	public abstract void registerAbility(Ability ability);
+	
+	// -------------------------------------------- //
+	// SCHEDULED DEACTIVATE
+	// -------------------------------------------- //
+	
+	/**
+	 * Checks if a scheduled deactive is scheduled yet.
+	 * @param {ScheduledDeactivate} scheduled deactivate to check for.
+	 * @return {boolean} true is scheduled.
+	 */
+	public abstract boolean isScheduled(ScheduledDeactivate sd);
+	
+	/**
+	 * Scheduled a scheduled deactivate
+	 * @param {ScheduledDeactivate} scheduled deactivate to schedule.
+	 */
+	public abstract void schedule(ScheduledDeactivate sd);
 	
 }

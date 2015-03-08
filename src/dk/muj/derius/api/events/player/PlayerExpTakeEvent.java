@@ -4,10 +4,10 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-import dk.muj.derius.api.DPlayer;
-import dk.muj.derius.api.Skill;
 import dk.muj.derius.api.events.DeriusEvent;
 import dk.muj.derius.api.events.SkillEvent;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.skill.Skill;
 
 /**
  * This event is thrown every time a player loses exp
