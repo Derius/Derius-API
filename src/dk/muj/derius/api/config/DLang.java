@@ -203,4 +203,11 @@ public interface DLang
 	public int getTimeAbilityDeactivateFadeOut();
 	public void setTimeAbilityDeactivateFadeOut(int timeAbilityDeactivateFadeOut);
 
+	// -------------------------------------------- //
+	// EXTENSIONS
+	// -------------------------------------------- //
+	
+	public String getMcmmoSkillMustBeDisabled();
+	public void setMcmmoSkillMustBeDisabled(String mcmmoSkillMustBeDisabled);
+	
 }
