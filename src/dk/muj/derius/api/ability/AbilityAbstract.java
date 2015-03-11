@@ -17,7 +17,7 @@ import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
 import dk.muj.derius.api.util.AbilityUtil;
 
-public abstract class DeriusAbility implements Ability
+public abstract class AbilityAbstract implements Ability
 {
 	// -------------------------------------------- //
 	// FIELDS

@@ -26,7 +26,7 @@ import dk.muj.derius.api.lvl.LvlStatusDefault;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.util.SkillUtil;
 
-public abstract class DeriusSkill implements Skill
+public abstract class SkillAbstract implements Skill
 {
 	// -------------------------------------------- //
 	// FIELDS
