@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin;
 import com.massivecraft.massivecore.xlib.gson.Gson;
 
 import dk.muj.derius.api.ability.Ability;
+import dk.muj.derius.api.inventory.SpecialItemManager;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
 
@@ -106,5 +107,15 @@ public interface Derius
 	 * @param {ScheduledDeactivate} scheduled deactivate to schedule.
 	 */
 	public abstract void schedule(ScheduledDeactivate sd);
+	
+	// -------------------------------------------- //
+	// OTHER
+	// -------------------------------------------- //
+	
+	/**
+	 * Registers a special item manager, used to avoid cheating.
+	 * @param {SpecialItemManager} manager to activate.
+	 */
+	public abstract void registerSpecialItemManager(SpecialItemManager manager);
 	
 }

@@ -14,6 +14,7 @@ import com.massivecraft.massivecore.xlib.gson.Gson;
 
 import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.config.DLang;
+import dk.muj.derius.api.inventory.SpecialItemManager;
 import dk.muj.derius.api.mixin.BlockMixin;
 import dk.muj.derius.api.mixin.MaxLevelMixin;
 import dk.muj.derius.api.mixin.StaminaMixin;
@@ -170,6 +171,19 @@ public class DeriusAPI
 	public static void scheduleDeactivate(ScheduledDeactivate sd)
 	{
 		getCoreEnsured().schedule(sd);
+	}
+	
+	// -------------------------------------------- //
+	// OTHER
+	// -------------------------------------------- //
+	
+	/**
+	 * Registers a special item manager, used to avoid cheating.
+	 * @param {SpecialItemManager} manager to activate.
+	 */
+	public static void registerSpecialItemManager(SpecialItemManager manager)
+	{
+		getCoreEnsured().registerSpecialItemManager(manager);
 	}
 	
 	// -------------------------------------------- //
