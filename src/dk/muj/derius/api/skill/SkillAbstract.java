@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.OptionalInt;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.bukkit.Material;
@@ -22,7 +21,6 @@ import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.config.DLang;
 import dk.muj.derius.api.lvl.LvlStatus;
 import dk.muj.derius.api.lvl.LvlStatusCalculator;
-import dk.muj.derius.api.lvl.LvlStatusDefault;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.util.SkillUtil;
 
@@ -119,17 +117,7 @@ public abstract class SkillAbstract implements Skill
 	// -------------------------------------------- //
 	
 	// Lambda, This is the default algorithm
-	private transient LvlStatusCalculator expToLvlStatus = (long exp) -> 	
-	{	
-		int level = 0, nextLvlExp;
-		for(nextLvlExp = 1024; nextLvlExp < exp; level++)
-		{
-			exp -= nextLvlExp;
-			nextLvlExp *= 1.01;
-		}
-		
-		return new LvlStatusDefault(level, OptionalInt.of( (int) exp), OptionalInt.of(nextLvlExp));
-	};
+	private transient LvlStatusCalculator expToLvlStatus = LvlStatusCalculator.exponentialOf(1024, 1.01);
 	@Override public final LvlStatus getLvlStatusFromExp(long exp) { return this.expToLvlStatus.calculateLvlStatus(exp); }
 	@Override public final void setLvlStatusAlgorithm(LvlStatusCalculator algorithm) { this.expToLvlStatus = algorithm; }
 	@Override public final LvlStatusCalculator getLvlStatusAlgorithm() { return this.expToLvlStatus; }

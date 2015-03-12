@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.massivecraft.massivecore.util.MUtil;
 
-public abstract class SpecialItemManagerDefault implements SpecialItemManager
+public abstract class SpecialItemManagerEnchant implements SpecialItemManager
 {
 	// -------------------------------------------- //
 	// OVERRIDE

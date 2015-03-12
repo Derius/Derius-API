@@ -26,7 +26,7 @@ public class LvlStatusDefault implements LvlStatus
 	 */
 	private final OptionalInt  exp;
 	public OptionalInt getExp () {	return exp;	}
-	public LvlStatus withExp (OptionalInt  exp) { return new LvlStatusDefault(this.level, exp, this.expToNext); }
+	public LvlStatus withExp(OptionalInt  exp) { return new LvlStatusDefault(this.level, exp, this.expToNext); }
 	
 	/**
 	 * This is how much exp is required to reach next lvl
@@ -34,22 +34,46 @@ public class LvlStatusDefault implements LvlStatus
 	 */
 	private final OptionalInt  expToNext;
 	public OptionalInt  getExpToNextLvl () { return expToNext; }
-	public LvlStatus withExpToNextLvl (OptionalInt  expToNextLvl) { return new LvlStatusDefault(this.level,this.exp, expToNextLvl); }
+	public LvlStatus withExpToNextLvl(OptionalInt  expToNextLvl) { return new LvlStatusDefault(this.level,this.exp, expToNextLvl); }
 	
 	// -------------------------------------------- //
 	// CONSTRUCTOR
 	// -------------------------------------------- //
 	
-	public LvlStatusDefault(int level)
+	private LvlStatusDefault(int level)
 	{
 		this(level, OptionalInt.empty(), OptionalInt.empty());
 	}
 	
-	public LvlStatusDefault(int level, OptionalInt  currentExperience, OptionalInt  expToNextLvl)
+	private LvlStatusDefault(int level, int currentExperience, int expToNextLvl)
+	{
+		this(level, OptionalInt.of(currentExperience), OptionalInt.of(expToNextLvl));
+	}
+	
+	private LvlStatusDefault(int level, OptionalInt  currentExperience, OptionalInt  expToNextLvl)
 	{
 		this.level = level;
 		this.exp = currentExperience;
 		this.expToNext = expToNextLvl;
+	}
+	
+	// -------------------------------------------- //
+	// FACTORY
+	// -------------------------------------------- //
+	
+	public static LvlStatusDefault valueOf(int level)
+	{
+		return new LvlStatusDefault(level);
+	}
+	
+	public static LvlStatusDefault valueOf(int level, int  currentExperience, int  expToNextLvl)
+	{
+		return new LvlStatusDefault(level, currentExperience, expToNextLvl);
+	}
+	
+	public static LvlStatusDefault valueOf(int level, OptionalInt  currentExperience, OptionalInt  expToNextLvl)
+	{
+		return new LvlStatusDefault(level, currentExperience, expToNextLvl);
 	}
 	
 	// -------------------------------------------- //
@@ -88,12 +112,15 @@ public class LvlStatusDefault implements LvlStatus
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (obj == null) return false;
+		if (obj == this) return true;
 		if ( ! (obj instanceof LvlStatus)) return false;
-		
 		LvlStatus that = (LvlStatus) obj;
-		if (that.getLvl() == this.getLvl() && that.getExp() == this.getExp() && that.getExpToNextLvl() == this.getExpToNextLvl()) return true;
-		return false;
+		
+		if (this.getLvl() != that.getLvl()) return false;
+		if ( ! this.getExp().equals(that.getExp())) return false;
+		if ( ! this.getExpToNextLvl().equals(that.getExpToNextLvl())) return false;
+		
+		return true;
 	}
 
 }
