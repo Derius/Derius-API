@@ -58,7 +58,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 		int damage = (int) MUtil.probabilityRound(1D / multiplier);
 		event.setDamage(damage);
 		
-		return damage; // Return is unused.
+		return damage; // Return is often unused.
 	}
 	
 	@Override

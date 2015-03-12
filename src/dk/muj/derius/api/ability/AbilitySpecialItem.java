@@ -1,5 +1,6 @@
 package dk.muj.derius.api.ability;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 
 import org.bukkit.Material;
@@ -77,5 +78,7 @@ public abstract class AbilitySpecialItem extends AbilityAbstract
 	// -------------------------------------------- //
 	
 	public abstract SpecialItemManager getSpecialItemManager();
-
+	public abstract Collection<Material> getToolTypes();
+	public abstract Collection<Material> getBlockTypes();
+	
 }
