@@ -59,7 +59,7 @@ public class ReqIsntGameMode implements Req, ReqToDefault
 	public String createErrorMessage(DPlayer dplayer)
 	{
 		//																					Using String.valueOf null is handled.
-		return Txt.parse(DLang.get().getMustNotBeGamemode().replaceAll("{gm}", Txt.getNicedEnum(String.valueOf(IdUtil.getGameMode(dplayer, null)))));
+		return Txt.parse(DLang.get().getMustNotBeGamemode().replace("{gm}", Txt.getNicedEnum(String.valueOf(IdUtil.getGameMode(dplayer, null)))));
 	}
 
 }

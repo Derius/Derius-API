@@ -43,7 +43,7 @@ public class ReqHasEnoughStamina implements Req, ReqNoSkill, ReqNoDefault
 	@Override
 	public String createErrorMessage(DPlayer dplayer, Ability ability)
 	{
-		return Txt.parse(DLang.get().getMustHaveEnoughStamina().replaceAll("{ability}", ability.getDisplayName(dplayer)));
+		return Txt.parse(DLang.get().getMustHaveEnoughStamina().replace("{ability}", ability.getDisplayName(dplayer)));
 	}
 
 }

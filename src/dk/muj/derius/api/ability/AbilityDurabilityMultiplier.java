@@ -28,7 +28,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 
 	public AbilityDurabilityMultiplier()
 	{
-		this.setDesc("Extends {toolname} durability".replaceAll("{toolname}", this.getToolName()));
+		this.setDesc("Extends {toolname} durability".replace("{toolname}", this.getToolName()));
 
 		this.setType(AbilityType.PASSIVE);
 		this.setCooldownMillis(-1);
@@ -44,7 +44,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 		OptionalDouble optMultiplier = LevelUtil.getLevelSettingFloat(this.getDurabilityMultiplier(), lvl);
 		if ( ! optMultiplier.isPresent()) return Optional.of("<i>No change");
 		double multiplier = optMultiplier.getAsDouble();
-		return Optional.of(String.format("<i>{toolname} durability multiplied by <h>%.2f".replaceAll("{toolname}", this.getToolName()), multiplier));
+		return Optional.of(String.format("<i>{toolname} durability multiplied by <h>%.2f".replace("{toolname}", this.getToolName()), multiplier));
 	}
 	
 	@Override

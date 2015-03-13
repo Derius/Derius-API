@@ -43,7 +43,7 @@ public class ReqIsntSpecialised implements Req, ReqAbilityToSkill, ReqNoDefault
 	@Override
 	public String createErrorMessage(DPlayer dplayer, Skill skill)
 	{
-		return Txt.parse(DLang.get().getSpecialisationHasAlready().replaceAll("{skill}", skill.getDisplayName(dplayer)));
+		return Txt.parse(DLang.get().getSpecialisationHasAlready().replace("{skill}", skill.getDisplayName(dplayer)));
 	}
 
 }

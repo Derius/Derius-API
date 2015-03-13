@@ -49,7 +49,7 @@ public class ReqIsntExhausted implements Req, ReqToDefault
 		LinkedHashMap<TimeUnit, Long> expireUnit = TimeDiffUtil.limit(TimeDiffUtil.unitcounts(expire, TimeUnit.getAll()), 2);
 		String expireDesc = TimeDiffUtil.formatedVerboose(expireUnit, "<i>");
 		
-		return Txt.parse(DLang.get().getPrefix() + DLang.get().getExhausted().replaceAll("{time}", expireDesc));
+		return Txt.parse(DLang.get().getPrefix() + DLang.get().getExhausted().replace("{time}", expireDesc));
 	}
 	
 }

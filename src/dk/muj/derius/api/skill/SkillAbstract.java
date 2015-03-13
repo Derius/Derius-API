@@ -230,8 +230,8 @@ public abstract class SkillAbstract implements Skill
 		String name = this.getDisplayName(dplayer);
 		String format = DLang.get().getSkillDisplayedDescription();
 		String ret = format
-				.replaceAll("{name}", name)
-				.replaceAll("{desc}", this.getDesc());
+				.replace("{name}", name)
+				.replace("{desc}", this.getDesc());
 		return Txt.parse(ret);
 	}
 	

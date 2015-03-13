@@ -43,7 +43,7 @@ public class ReqIsntBlacklisted implements Req, ReqAbilityToSkill, ReqNoDefault
 	@Override
 	public String createErrorMessage(DPlayer dplayer, Skill skill)
 	{
-		return Txt.parse(DLang.get().getSpecialisationBlacklisted().replaceAll("{skill}", skill.getDisplayName(dplayer)));
+		return Txt.parse(DLang.get().getSpecialisationBlacklisted().replace("{skill}", skill.getDisplayName(dplayer)));
 	}
 
 }

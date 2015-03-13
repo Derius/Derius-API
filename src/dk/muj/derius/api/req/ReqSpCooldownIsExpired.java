@@ -52,7 +52,7 @@ public class ReqSpCooldownIsExpired implements Req, ReqToDefault
 		String spDesc = TimeDiffUtil.formatedVerboose(ageUnitcounts, "<i>");
 		String msg = "%s\n%s";
 		msg = msg.replaceFirst("%s", DLang.get().getSpecialisationCantChange());
-		msg = msg.replaceFirst("%s", DLang.get().getSpecialisationChangeCooldown().replaceAll("{time}", spDesc));
+		msg = msg.replaceFirst("%s", DLang.get().getSpecialisationChangeCooldown().replace("{time}", spDesc));
 		
 		return Txt.parse(msg);
 

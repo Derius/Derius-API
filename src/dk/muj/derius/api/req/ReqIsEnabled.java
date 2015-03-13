@@ -44,7 +44,7 @@ public class ReqIsEnabled implements Req, ReqNoDefault
 	@Override
 	public String createErrorMessage(DPlayer dplayer, Skill skill)
 	{
-		return Txt.parse(DLang.get().getSkillDisabled().replaceAll("{skill}", skill.getDisplayName(dplayer)));
+		return Txt.parse(DLang.get().getSkillDisabled().replace("{skill}", skill.getDisplayName(dplayer)));
 	}
 	
 	// -------------------------------------------- //
@@ -60,7 +60,7 @@ public class ReqIsEnabled implements Req, ReqNoDefault
 	@Override
 	public String createErrorMessage(DPlayer dplayer, Ability ability)
 	{
-		return Txt.parse(DLang.get().getAbilityDisabled().replaceAll("{ability}", ability.getDisplayName(dplayer)));
+		return Txt.parse(DLang.get().getAbilityDisabled().replace("{ability}", ability.getDisplayName(dplayer)));
 	}
 
 }

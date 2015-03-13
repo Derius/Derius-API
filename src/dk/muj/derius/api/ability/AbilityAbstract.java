@@ -126,8 +126,8 @@ public abstract class AbilityAbstract implements Ability
 		String name = this.getDisplayName(dplayer);
 		String format = DLang.get().getAbilityDisplayedDescription();
 		String ret = format
-				.replaceAll("{name}", name)
-				.replaceAll("{desc}", this.getDesc());
+				.replace("{name}", name)
+				.replace("{desc}", this.getDesc());
 		return Txt.parse(ret);
 	}
 	

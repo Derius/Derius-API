@@ -49,7 +49,7 @@ public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 	@Override
 	public String createErrorMessage(DPlayer dplayer, Skill skill)
 	{
-		return Txt.parse(DLang.get().getSkillLevelIsTooLow().replaceAll("{level}", String.valueOf(this.getlevel())).replaceAll("{skill}", skill.getDisplayName(dplayer)));
+		return Txt.parse(DLang.get().getSkillLevelIsTooLow().replace("{level}", String.valueOf(this.getlevel())).replace("{skill}", skill.getDisplayName(dplayer)));
 	}
 
 }

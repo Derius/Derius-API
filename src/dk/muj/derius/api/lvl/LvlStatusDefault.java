@@ -91,16 +91,16 @@ public class LvlStatusDefault implements LvlStatus
 		{
 			final String format = DLang.get().getLevelStatusFormatMini();
 			ret = format
-					.replaceAll("{level}", String.valueOf(this.getLvl()));
+					.replace("{level}", String.valueOf(this.getLvl()));
 		}
 		else
 		{
 		
 			final String format = DLang.get().getLevelStatusFormat();
 			ret = format
-				.replaceAll("{level}", String.valueOf(this.getLvl()))
-				.replaceAll("{exp}", String.valueOf(this.getExp().getAsInt()))
-				.replaceAll("{expToNext}", String.valueOf(this.getExpToNextLvl().getAsInt()));
+				.replace("{level}", String.valueOf(this.getLvl()))
+				.replace("{exp}", String.valueOf(this.getExp().getAsInt()))
+				.replace("{expToNext}", String.valueOf(this.getExpToNextLvl().getAsInt()));
 		}
 		return Txt.parse(ret);
 	}
