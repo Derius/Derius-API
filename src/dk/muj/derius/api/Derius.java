@@ -118,4 +118,5 @@ public interface Derius
 	 */
 	public abstract void registerSpecialItemManager(SpecialItemManager manager);
 	
+	public abstract void debug(int level, String format, Object... args);
 }

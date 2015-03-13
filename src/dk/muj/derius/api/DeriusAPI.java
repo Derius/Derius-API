@@ -186,6 +186,11 @@ public class DeriusAPI
 		getCoreEnsured().registerSpecialItemManager(manager);
 	}
 	
+	public static void debug(int level, String format, Object... args)
+	{
+		getCoreEnsured().debug(level, format, args);
+	}
+	
 	// -------------------------------------------- //
 	// BLOCK MIXIN
 	// -------------------------------------------- //

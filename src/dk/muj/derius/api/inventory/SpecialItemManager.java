@@ -66,6 +66,7 @@ public interface SpecialItemManager
 	{
 		for (ItemStack is : inv.getContents())
 		{
+			if (is == null) continue;
 			if ( ! this.matches(is)) continue;
 			if ( ! this.isSpecial(is)) continue;
 		
