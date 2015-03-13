@@ -13,6 +13,13 @@ import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.util.AbilityUtil;
 import dk.muj.derius.api.util.LevelUtil;
 
+/* 
+ * This class is made for similar abilities that all,
+ * extend the durability of an item depending on,
+ * the users (player) level in a ceratin skill.
+ * Furthermore these abilites will automatically
+ * be handled/activated if they are activated.
+ */
 public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 {
 	// -------------------------------------------- //
@@ -46,6 +53,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 		if ( ! (other instanceof PlayerItemDamageEvent))return AbilityUtil.CANCEL;
 		PlayerItemDamageEvent event = (PlayerItemDamageEvent) other;
 		
+		// TODO: Move this logic into the core.
 		if ( ! this.getToolTypes().contains(event.getItem().getType())) return AbilityUtil.CANCEL;
 		
 		int level = dplayer.getLvl(this.getSkill());
@@ -62,10 +70,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 	}
 	
 	@Override
-	public void onDeactivate(DPlayer p, Object other)
-	{
-		
-	}
+	public void onDeactivate(DPlayer p, Object other) { }
 
 	// -------------------------------------------- //
 	// ABSTRACT
