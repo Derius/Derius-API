@@ -1,6 +1,7 @@
 package dk.muj.derius.api.ability;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.massivecraft.massivecore.Registerable;
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
@@ -318,7 +319,7 @@ public interface Ability extends Registerable
 	 * @param {int} the level you want to test for
 	 * @return {String} the actual string message
 	 */
-	public String getLvlDescriptionMsg(int lvl);
+	public Optional<String> getLvlDescriptionMsg(int lvl);
 	
 	// Ability Execution methods
 	/**

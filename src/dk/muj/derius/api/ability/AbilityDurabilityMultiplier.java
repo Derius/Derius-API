@@ -2,10 +2,10 @@ package dk.muj.derius.api.ability;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.OptionalDouble;
 
 import org.bukkit.Material;
-import org.bukkit.event.player.PlayerItemDamageEvent;
 
 import com.massivecraft.massivecore.util.MUtil;
 
@@ -39,34 +39,26 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 	// -------------------------------------------- //
 
 	@Override
-	public String getLvlDescriptionMsg(int lvl)
+	public Optional<String> getLvlDescriptionMsg(int lvl)
 	{
 		OptionalDouble optMultiplier = LevelUtil.getLevelSettingFloat(this.getDurabilityMultiplier(), lvl);
-		if ( ! optMultiplier.isPresent()) return "<i>No change";
+		if ( ! optMultiplier.isPresent()) return Optional.of("<i>No change");
 		double multiplier = optMultiplier.getAsDouble();
-		return String.format("<i>{toolname} durability multiplied by <h>%.2f".replaceAll("{toolname}", this.getToolName()), multiplier);
+		return Optional.of(String.format("<i>{toolname} durability multiplied by <h>%.2f".replaceAll("{toolname}", this.getToolName()), multiplier));
 	}
 	
 	@Override
 	public Object onActivate(DPlayer dplayer, Object other)
 	{
-		if ( ! (other instanceof PlayerItemDamageEvent))return AbilityUtil.CANCEL;
-		PlayerItemDamageEvent event = (PlayerItemDamageEvent) other;
+		if ( ! (other instanceof Number))return AbilityUtil.CANCEL;
+		double multiplier = ((Number) other).doubleValue();
 		
-		// TODO: Move this logic into the core.
-		if ( ! this.getToolTypes().contains(event.getItem().getType())) return AbilityUtil.CANCEL;
-		
-		int level = dplayer.getLvl(this.getSkill());
-		OptionalDouble optMultiplier = LevelUtil.getLevelSettingFloat(this.getDurabilityMultiplier(), level);
-		if ( ! optMultiplier.isPresent()) return AbilityUtil.CANCEL;
-		double multiplier = optMultiplier.getAsDouble();
 		
 		// EXAMPLES: 1 / 3 = 0.333 so if multiplier is 3 in every third case damage occurs
 		// EXAMPLES: 1 / 0.333 = 3 so if multiplier is lower than 1. Damage will be multiplied.
 		int damage = (int) MUtil.probabilityRound(1D / multiplier);
-		event.setDamage(damage);
 		
-		return damage; // Return is often unused.
+		return damage;
 	}
 	
 	@Override

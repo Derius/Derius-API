@@ -2,6 +2,7 @@ package dk.muj.derius.api.ability;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.Optional;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,7 +15,6 @@ import com.massivecraft.massivecore.util.Txt;
 import dk.muj.derius.api.inventory.SpecialItemManager;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.req.ReqCooldownIsExpired;
-import dk.muj.derius.api.util.AbilityUtil;
 /*
  * This class is for abilities that make an item special,
  * while they are activated.
@@ -39,7 +39,7 @@ public abstract class AbilitySpecialItem extends AbilityAbstract
 	// -------------------------------------------- //
 
 	@Override
-	public String getLvlDescriptionMsg(int lvl)
+	public Optional<String> getLvlDescriptionMsg(int lvl)
 	{
 		// How long does the ability last?
 		int millis = this.getDurationMillis(lvl);
@@ -54,17 +54,15 @@ public abstract class AbilitySpecialItem extends AbilityAbstract
 		String durationDesc = TimeDiffUtil.formated(unitcounts, entry, comma, and, "<yellow>");
 		
 		// Example: "Lasts 16 seconds"
-		return "<i>Lasts " + durationDesc;
+		return Optional.of("<i>Lasts " + durationDesc);
 	}
 
 	@Override
 	public Object onActivate(DPlayer dplayer, Object other)
 	{
 		// Must be player.
-		if ( ! dplayer.isPlayer()) return AbilityUtil.CANCEL;
 		Player player = dplayer.getPlayer();
 		ItemStack inHand = player.getItemInHand();
-		if (inHand == null || inHand.getType() == Material.AIR) return AbilityUtil.CANCEL;
 		
 		this.getSpecialItemManager().toSpecial(inHand);
 		

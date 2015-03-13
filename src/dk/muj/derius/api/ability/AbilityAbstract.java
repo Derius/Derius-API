@@ -14,7 +14,6 @@ import dk.muj.derius.api.Req;
 import dk.muj.derius.api.VerboseLevel;
 import dk.muj.derius.api.config.DLang;
 import dk.muj.derius.api.player.DPlayer;
-import dk.muj.derius.api.skill.Skill;
 import dk.muj.derius.api.util.AbilityUtil;
 
 public abstract class AbilityAbstract implements Ability
@@ -139,19 +138,6 @@ public abstract class AbilityAbstract implements Ability
 		return color + this.getName();
 	}
 
-	// -------------------------------------------- //
-	// ABSTRACT
-	// -------------------------------------------- //
-	
-	public abstract Skill getSkill();
-		
-	public abstract String getId();
-	
-	public abstract String getLvlDescriptionMsg(int lvl);
-	
-	public abstract Object onActivate(DPlayer dplayer, Object other);
-	public abstract void onDeactivate(DPlayer dplayer, Object other);
-	
 	// -------------------------------------------- //
 	// EQUALS & HASH CODE
 	// -------------------------------------------- //

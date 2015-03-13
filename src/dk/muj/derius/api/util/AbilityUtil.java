@@ -9,7 +9,8 @@ import dk.muj.derius.api.ScheduledDeactivate;
 import dk.muj.derius.api.VerboseLevel;
 import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.ability.Ability.AbilityType;
-import dk.muj.derius.api.events.AbilityActivateEvent;
+import dk.muj.derius.api.events.AbilityActivatePostEvent;
+import dk.muj.derius.api.events.AbilityActivatePreEvent;
 import dk.muj.derius.api.events.AbilityDeactivateEvent;
 import dk.muj.derius.api.player.DPlayer;
 
@@ -109,21 +110,28 @@ public final class AbilityUtil
 		dplayer.takeStamina(ability.getStaminaUsage());
 		
 		// EVENT
-		AbilityActivateEvent event = new AbilityActivateEvent(ability, dplayer);
-		if ( ! event.runEvent()) return CANCEL;
+		AbilityActivatePreEvent preEvent = new AbilityActivatePreEvent(ability, dplayer);
+		if ( ! preEvent.runEvent()) return CANCEL;
 		
 		// ACTIVATE
 		if (ability.getType() == AbilityType.PASSIVE)
 		{
-			return activatePassiveAbility(dplayer, ability, other);
+			other = activatePassiveAbility(dplayer, ability, other);
 		}
 		else if (ability.getType() == AbilityType.ACTIVE)
 		{
-			return activateActiveAbility(dplayer, ability, other);
+			other = activateActiveAbility(dplayer, ability, other);
+		}
+		else
+		{
+			// This might be cruel but will actually help squash bugs faster.
+			throw new RuntimeException("Passed abiliy does not have a valid ability type");
 		}
 		
-		// This might be cruel but will actually help squash bugs faster.
-		throw new RuntimeException("Passed abiliy does not have a valid ability type");
+		AbilityActivatePostEvent postEvent = new AbilityActivatePostEvent(ability, dplayer, other);
+		other = postEvent.getOther();
+		
+		return other;
 	}
 	
 	/**
@@ -178,12 +186,11 @@ public final class AbilityUtil
 		if (dplayer.hasActivatedAny()) return CANCEL;
 
 		dplayer.setActivatedAbility(Optional.of(ability));
-		
-		dplayer.setPreparedTool(Optional.empty());
 
 		final Object obj = ability.onActivate(dplayer, other);
-		int duration = ability.getDurationMillis(dplayer.getLvl(ability.getSkill()));
 		if (obj == CANCEL) return CANCEL;
+		
+		int duration = ability.getDurationMillis(dplayer.getLvl(ability.getSkill()));
 		ScheduledDeactivate sd = new ScheduledDeactivate(dplayer, duration, other);
 		sd.schedule();
 		

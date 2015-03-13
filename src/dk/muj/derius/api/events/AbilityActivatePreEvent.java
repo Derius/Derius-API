@@ -11,9 +11,10 @@ import dk.muj.derius.api.player.DPlayer;
 /**
  * Thrown whenever a player activates an ability.
  * Some abilities don't throw this event due to the way they work,
- * that is however the exception rather than the norm.'
+ * that is however the exception rather than the norm.
+ * Some abilities are still cancelled even if this event is thrown.
  */
-public class AbilityActivateEvent extends DeriusEvent implements Cancellable, AbilityEvent, DPlayerEvent
+public class AbilityActivatePreEvent extends DeriusEvent implements Cancellable, AbilityEvent, DPlayerEvent
 {
 	// -------------------------------------------- //
 	// REQUIRED EVENT CODE
@@ -41,7 +42,7 @@ public class AbilityActivateEvent extends DeriusEvent implements Cancellable, Ab
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	public AbilityActivateEvent(Ability ability, DPlayer dplayer)
+	public AbilityActivatePreEvent(Ability ability, DPlayer dplayer)
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");
@@ -68,8 +69,8 @@ public class AbilityActivateEvent extends DeriusEvent implements Cancellable, Ab
 	public boolean equals(Object obj)
 	{		
 		if (obj == this) return true;
-		if ( ! (obj instanceof AbilityActivateEvent)) return false;
-		AbilityActivateEvent that = (AbilityActivateEvent) obj;
+		if ( ! (obj instanceof AbilityActivatePreEvent)) return false;
+		AbilityActivatePreEvent that = (AbilityActivatePreEvent) obj;
 	
 		if (this.getDPlayer() != that.getDPlayer()) return false;
 		if (this.getAbility() != that.getAbility()) return false;
