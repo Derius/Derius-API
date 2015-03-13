@@ -100,7 +100,7 @@ public class DeriusAPI
 	 */
 	public static Collection< ? extends Skill> getAllSkills()
 	{
-		return getCore().getAllSkills();
+		return getCoreEnsured().getAllSkills();
 	}
 	
 	/**
