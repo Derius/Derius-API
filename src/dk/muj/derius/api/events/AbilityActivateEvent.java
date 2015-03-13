@@ -8,6 +8,11 @@ import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.events.player.DPlayerEvent;
 import dk.muj.derius.api.player.DPlayer;
 
+/**
+ * Thrown whenever a player activates an ability.
+ * Some abilities don't throw this event due to the way they work,
+ * that is however the exception rather than the norm.'
+ */
 public class AbilityActivateEvent extends DeriusEvent implements Cancellable, AbilityEvent, DPlayerEvent
 {
 	// -------------------------------------------- //
@@ -15,8 +20,8 @@ public class AbilityActivateEvent extends DeriusEvent implements Cancellable, Ab
 	// -------------------------------------------- //
 	
 	private static final HandlerList handlers = new HandlerList();
-	@Override public HandlerList getHandlers() {	return handlers;	} 
-	public static HandlerList getHandlerList() {	return handlers;	}
+	@Override public HandlerList getHandlers() { return handlers; } 
+	public static HandlerList getHandlerList() { return handlers; }
 	
 	// -------------------------------------------- //
 	// FIELDS
