@@ -10,6 +10,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.massivecraft.massivecore.util.MUtil;
 
+/*
+ * This SpecialItemManager adds an removes an enchant from the item.
+ */
 public abstract class SpecialItemManagerEnchant implements SpecialItemManager
 {
 	// -------------------------------------------- //
