@@ -2,6 +2,7 @@ package dk.muj.derius.api;
 
 import java.util.Collection;
 
+import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 
 import com.massivecraft.massivecore.xlib.gson.Gson;
@@ -90,6 +91,28 @@ public interface Derius
 	 * @param {Ability} ability to register.
 	 */
 	public abstract void registerAbility(Ability ability);
+	
+	
+	// -------------------------------------------- //
+	// PREPARABLE TOOLS
+	// -------------------------------------------- //
+	
+	
+	/**
+	 * Gets the tool which a player can prepare.
+	 * When a player prepare a tool they get a message and
+	 * skills can use it to only activate if the player has a tool prepared.
+	 * @return {Collection<Material>} collection of tools that can be prepared.
+	 */
+	public abstract Collection<Material> getPreparableTools();
+	/** @see Derius#getPreparableTools this is just a mutative operation on that collection.*/
+	public abstract void registerPreparableTools(Collection<Material> materials);
+	/** @see Derius#getPreparableTools this is just a mutative operation on that collection.*/
+	public abstract void registerPreparableTool(Material material);
+	/** @see Derius#getPreparableTools this is just doing a check on that collection.*/
+	public abstract boolean isRegisteredAsPreparable(Material material);
+	/** @see Derius#getPreparableTools this is just doing a check on that collection.*/
+	public abstract void unregisterPreparableTool(Material material);
 	
 	// -------------------------------------------- //
 	// SCHEDULED DEACTIVATE

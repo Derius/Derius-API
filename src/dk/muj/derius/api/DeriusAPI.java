@@ -151,6 +151,45 @@ public class DeriusAPI
 	}
 	
 	// -------------------------------------------- //
+	// PREPARABLE TOOLS
+	// -------------------------------------------- //
+	
+	/**
+	 * Gets the tool which a player can prepare.
+	 * When a player prepare a tool they get a message and
+	 * skills can use it to only activate if the player has a tool prepared.
+	 * @return {Collection<Material>} collection of tools that can be prepared.
+	 */
+	public static Collection<Material> getPreparableTools()
+	{
+		return getCoreEnsured().getPreparableTools();
+	}
+	
+	/** @see Derius#getPreparableTools this is just a mutative operation on that collection.*/
+	public static void registerPreparableTools(Collection<Material> materials)
+	{
+		getCoreEnsured().registerPreparableTools(materials);
+	}
+	
+	/** @see Derius#getPreparableTools this is just a mutative operation on that collection.*/
+	public static void registerPreparableTool(Material material)
+	{
+		getCoreEnsured().registerPreparableTool(material);
+	}
+	
+	/** @see Derius#getPreparableTools this is just doing a check on that collection.*/
+	public static boolean isRegisteredAsPreparable(Material material)
+	{
+		return getCoreEnsured().isRegisteredAsPreparable(material);
+	}
+	
+	/** @see Derius#getPreparableTools this is just doing a check on that collection.*/
+	public static void unregisterPreparableTool(Material material)
+	{
+		getCoreEnsured().unregisterPreparableTool(material);
+	}
+	
+	// -------------------------------------------- //
 	// SCHEDULED DEACTIVATE
 	// -------------------------------------------- //
 	
