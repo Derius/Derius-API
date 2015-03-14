@@ -10,6 +10,10 @@ import org.bukkit.inventory.ItemStack;
 
 import dk.muj.derius.api.player.DPlayer;
 
+/*
+ * This class is for abilites that just provide a double drop.
+ * It will minimise duplicate code and also automatically activate.
+ */
 public abstract class AbilityDoubleDrop extends AbilityAbstract
 {
 	// -------------------------------------------- //

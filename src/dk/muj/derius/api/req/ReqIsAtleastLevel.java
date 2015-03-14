@@ -9,15 +9,23 @@ import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.req.util.ReqAbilityToSkill;
 import dk.muj.derius.api.req.util.ReqNoDefault;
 import dk.muj.derius.api.skill.Skill;
+import dk.muj.derius.lib.Getter;
 
 public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 {
 	// -------------------------------------------- //
+	// FIELDS
+	// -------------------------------------------- //
+	
+	private final Getter<Integer> levelGetter;
+	public int getlevel() { return this.levelGetter.get(); }
+	
+	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	public static ReqIsAtleastLevel get(int level) { return new ReqIsAtleastLevel(level); }
-	private ReqIsAtleastLevel(int level) { this.level = level; }
+	public static ReqIsAtleastLevel get(Getter<Integer> levelGetter) { return new ReqIsAtleastLevel(levelGetter); }
+	private ReqIsAtleastLevel(Getter<Integer> levelGetter) { this.levelGetter = levelGetter; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE: VERBOSE LEVEL
@@ -28,14 +36,7 @@ public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 	{
 		return VerboseLevel.NORMAL;
 	}
-	
-	// -------------------------------------------- //
-	// FIELDS
-	// -------------------------------------------- //
-	
-	private final int level;
-	public int getlevel() { return this.level; }
-	
+
 	// -------------------------------------------- //
 	// OVERRIDE: SKILL
 	// -------------------------------------------- //
@@ -43,7 +44,7 @@ public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 	@Override
 	public boolean apply(DPlayer dplayer, Skill skill)
 	{
-		return (dplayer.getLvl(skill) >= level);
+		return (dplayer.getLvl(skill) >= this.getlevel());
 	}
 
 	@Override
