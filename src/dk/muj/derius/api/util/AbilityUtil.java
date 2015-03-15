@@ -61,7 +61,7 @@ public final class AbilityUtil
 			
 			// Debug
 			DeriusAPI.debug(10000, "<i>The player <h>%s <i>can't activate the ability <h>%s <i>because of the req <h>%s",
-					dplayer.getDisplayName(IdUtil.getConsole()), ability.getName(), req.getClass().getSimpleName());
+					dplayer.getDisplayName(IdUtil.CONSOLE_ID), ability.getName(), req.getClass().getSimpleName());
 			
 			if (verboseLevel.includes(req.getVerboseLevel())) dplayer.sendMessage(req.createErrorMessage(dplayer, ability));
 			return false;
@@ -89,7 +89,7 @@ public final class AbilityUtil
 			
 			// Debug
 			DeriusAPI.debug(10000, "<i>The player <h>%s <i>can't see the ability <h>%s <i>because of the req <h>%s",
-					dplayer.getDisplayName(IdUtil.getConsole()), ability.getName(), req.getClass().getSimpleName());
+					dplayer.getDisplayName(IdUtil.CONSOLE_ID), ability.getName(), req.getClass().getSimpleName());
 			
 			if (verboseLevel.includes(req.getVerboseLevel())) dplayer.sendMessage(req.createErrorMessage(dplayer, ability));
 			return false;
@@ -118,7 +118,7 @@ public final class AbilityUtil
 		
 		// Debug
 		DeriusAPI.debug(9900, "<i>A request of activating the ability <h>%s <i>for the player <h>%s <i>was sent.",
-				ability.getName(), dplayer.getDisplayName(IdUtil.getConsole()));
+				ability.getName(), dplayer.getDisplayName(IdUtil.CONSOLE_ID));
 		
 		// CHECKS
 		if ( ! AbilityUtil.canPlayerActivateAbility(dplayer, ability, verboseLevel)) return CANCEL;
@@ -129,6 +129,9 @@ public final class AbilityUtil
 		// EVENT
 		AbilityActivatePreEvent preEvent = new AbilityActivatePreEvent(ability, dplayer);
 		if ( ! preEvent.runEvent()) return CANCEL;
+		
+		DeriusAPI.debug(5000, "<i>The player <h>%s <i>activated the ability <h>%s",
+				dplayer.getDisplayName(IdUtil.CONSOLE_ID), ability.getName());
 		
 		// ACTIVATE
 		if (ability.getType() == AbilityType.PASSIVE)
@@ -143,6 +146,12 @@ public final class AbilityUtil
 		{
 			// This might be cruel but will actually help squash bugs faster.
 			throw new RuntimeException("Passed abiliy does not have a valid ability type");
+		}
+		
+		if (other == CANCEL)
+		{
+			DeriusAPI.debug(7000, "<h>%s's <i>activation of <h>%s <i>failed.",
+					dplayer.getDisplayName(IdUtil.CONSOLE_ID), ability.getName());
 		}
 		
 		AbilityActivatePostEvent postEvent = new AbilityActivatePostEvent(ability, dplayer, other);
@@ -187,7 +196,6 @@ public final class AbilityUtil
 	
 		final Object obj = ability.onActivate(dplayer, other);
 		if (obj == CANCEL) return CANCEL;
-		ability.onDeactivate(dplayer, other);
 		
 		if(ability.hasCooldown())
 		{

@@ -48,17 +48,19 @@ public final class LevelUtil
 		
 		for (Entry<Integer, ? extends Number> entry : settings.entrySet())
 		{	
+			// It can be floor
+			if (entry.getKey() <= level)
+			{
+				if (floor == null || entry.getKey() >= floor.getKey()) floor = entry;
+			}
+			
 			// It can be ceil
-			if (entry.getKey() > level)
+			else if (entry.getKey() >= level)
 			{
 				if (ceil == null || entry.getKey() <= ceil.getKey()) ceil = entry;
 			}
 			
-			// It can be floor
-			else if (entry.getKey() < level)
-			{
-				if (floor == null || entry.getKey() >= floor.getKey()) floor = entry;
-			}
+
 		}
 		
 		if (floor == null) return OptionalDouble.empty();
