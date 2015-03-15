@@ -151,6 +151,19 @@ public class DeriusAPI
 	}
 	
 	// -------------------------------------------- //
+	// EXP
+	// -------------------------------------------- //
+	
+	/**
+	 * Registers an exp gain so exp will automatically be gained.
+	 * @param {BlockBreakExpGain} expgainer to register.
+	 */
+	public static void registerExpGain(BlockBreakExpGain gainer)
+	{
+		getCoreEnsured().registerExpGain(gainer);
+	}
+	
+	// -------------------------------------------- //
 	// PREPARABLE TOOLS
 	// -------------------------------------------- //
 	

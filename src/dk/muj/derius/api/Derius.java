@@ -23,7 +23,7 @@ public interface Derius
 	 * @param  @nullable {Plugin}to get gson for.
 	 * @return {Gson} gson for that plugin or for the core if plugin had no gson.
 	 */
-	public Gson getGson(Plugin plugin);
+	public abstract Gson getGson(Plugin plugin);
 	
 	// -------------------------------------------- //
 	// DPLAYERS
@@ -92,11 +92,19 @@ public interface Derius
 	 */
 	public abstract void registerAbility(Ability ability);
 	
+	// -------------------------------------------- //
+	// EXP
+	// -------------------------------------------- //
+	
+	/**
+	 * Registers an exp gain so exp will automatically be gained.
+	 * @param {BlockBreakExpGain} expgainer to register.
+	 */
+	public abstract void registerExpGain(BlockBreakExpGain gainer);
 	
 	// -------------------------------------------- //
 	// PREPARABLE TOOLS
 	// -------------------------------------------- //
-	
 	
 	/**
 	 * Gets the tool which a player can prepare.
