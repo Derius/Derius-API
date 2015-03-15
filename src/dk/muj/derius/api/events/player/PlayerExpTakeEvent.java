@@ -73,7 +73,7 @@ public class PlayerExpTakeEvent extends DeriusEvent implements Cancellable, DPla
 	public boolean equals(Object obj)
 	{		
 		if (obj == this) return true;
-		if ( ! (obj instanceof PlayerExpAddEvent)) return false;
+		if ( ! (obj instanceof PlayerExpTakeEvent)) return false;
 		PlayerExpTakeEvent that = (PlayerExpTakeEvent) obj;
 	
 	

@@ -59,8 +59,8 @@ public class PlayerLevelDownEvent extends DeriusEvent implements SkillEvent, DPl
 	public boolean equals(Object obj)
 	{		
 		if (obj == this) return true;
-		if ( ! (obj instanceof PlayerExpAddEvent)) return false;
-		PlayerExpAddEvent that = (PlayerExpAddEvent) obj;
+		if ( ! (obj instanceof PlayerLevelDownEvent)) return false;
+		PlayerLevelDownEvent that = (PlayerLevelDownEvent) obj;
 	
 		if (this.getSkill() != that.getSkill()) return false;
 		if (this.getDPlayer() != that.getDPlayer()) return false;

@@ -59,8 +59,8 @@ public class PlayerLevelUpEvent extends DeriusEvent implements SkillEvent, DPlay
 	public boolean equals(Object obj)
 	{		
 		if (obj == this) return true;
-		if ( ! (obj instanceof PlayerExpAddEvent)) return false;
-		PlayerExpAddEvent that = (PlayerExpAddEvent) obj;
+		if ( ! (obj instanceof PlayerLevelUpEvent)) return false;
+		PlayerLevelUpEvent that = (PlayerLevelUpEvent) obj;
 	
 		if (this.getSkill() != that.getSkill()) return false;
 		if (this.getDPlayer() != that.getDPlayer()) return false;

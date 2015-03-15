@@ -106,7 +106,7 @@ public class LvlStatusDefault implements LvlStatus
 	}
 	
 	// -------------------------------------------- //
-	// EQUALS
+	// EQUALS & HASHCODE
 	// -------------------------------------------- //
 	
 	@Override
@@ -121,6 +121,19 @@ public class LvlStatusDefault implements LvlStatus
 		if ( ! this.getExpToNextLvl().equals(that.getExpToNextLvl())) return false;
 		
 		return true;
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		int result = 1;
+		int prime = 31;
+		
+		result += this.getLvl()*prime;
+		result += this.getExp().hashCode()*31;
+		result += this.getExpToNextLvl().hashCode()*31;
+		
+		return result;
 	}
 
 }

@@ -72,8 +72,8 @@ public class AbilityActivatePostEvent extends DeriusEvent implements AbilityEven
 	public boolean equals(Object obj)
 	{		
 		if (obj == this) return true;
-		if ( ! (obj instanceof AbilityActivatePreEvent)) return false;
-		AbilityActivatePreEvent that = (AbilityActivatePreEvent) obj;
+		if ( ! (obj instanceof AbilityActivatePostEvent)) return false;
+		AbilityActivatePostEvent that = (AbilityActivatePostEvent) obj;
 	
 		if (this.getDPlayer() != that.getDPlayer()) return false;
 		if (this.getAbility() != that.getAbility()) return false;

@@ -43,8 +43,8 @@ public class StaminaMaxEvent extends DeriusEvent implements DPlayerEvent
 	public boolean equals(Object obj)
 	{		
 		if (obj == this) return true;
-		if ( ! (obj instanceof PlayerExpAddEvent)) return false;
-		SpecialisationSlotEvent that = (SpecialisationSlotEvent) obj;
+		if ( ! (obj instanceof StaminaMaxEvent)) return false;
+		StaminaMaxEvent that = (StaminaMaxEvent) obj;
 	
 		if (this.getDPlayer() != that.getDPlayer()) return false;
 		

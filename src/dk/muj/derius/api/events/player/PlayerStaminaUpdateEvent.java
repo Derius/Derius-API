@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 import dk.muj.derius.api.events.DeriusEvent;
 import dk.muj.derius.api.player.DPlayer;
 
-public class PlayerStaminaUpdateEvent extends DeriusEvent implements Cancellable, DPlayerEvent
+public abstract class PlayerStaminaUpdateEvent extends DeriusEvent implements Cancellable, DPlayerEvent
 {
 	// -------------------------------------------- //
 	// REQUIRED EVENT CODE
@@ -53,35 +53,6 @@ public class PlayerStaminaUpdateEvent extends DeriusEvent implements Cancellable
 	public String toString()
 	{
 		return this.getDPlayer().getName() + " got " + this.getStaminaAmount() + " stamina updated.";
-	}
-	
-	// -------------------------------------------- //
-	// EQUALS & HASH CODE
-	// -------------------------------------------- //
-	
-	@Override
-	public boolean equals(Object obj)
-	{		
-		if (obj == this) return true;
-		if ( ! (obj instanceof PlayerStaminaUpdateEvent)) return false;
-		PlayerStaminaUpdateEvent that = (PlayerStaminaUpdateEvent) obj;
-	
-		if (this.getStaminaAmount() != that.getStaminaAmount()) return false;
-		if (this.getDPlayer() != that.getDPlayer()) return false;
-		
-		return true;
-	}
-	
-	@Override
-	public int hashCode()
-	{
-		int result = 1;
-		int prime = 31;
-		
-		result += this.getStaminaAmount() * prime;
-		result += this.getDPlayer().hashCode() * prime;
-		
-		return result;
 	}
 
 }
