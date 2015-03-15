@@ -144,6 +144,7 @@ public abstract class SkillAbstract implements Skill
 		// If one of them has keys the other doesn't, they are now merged.
 		for(Entry<String, JsonElement> entry: that.getConfiguration().entrySet())
 		{
+			this.configuration.remove(entry.getKey());
 			this.configuration.add(entry.getKey(), entry.getValue());
 		}
 		
