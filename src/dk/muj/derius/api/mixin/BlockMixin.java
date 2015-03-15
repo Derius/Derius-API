@@ -10,7 +10,7 @@ import org.bukkit.block.Block;
 
 import com.massivecraft.massivecore.ps.PS;
 
-public interface BlockMixin extends Mixin
+public interface BlockMixin
 {
 	// Placed by player
 	

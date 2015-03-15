@@ -2,7 +2,7 @@ package dk.muj.derius.api.mixin;
 
 import org.bukkit.entity.Player;
 
-public interface StaminaMixin extends Mixin
+public interface StaminaMixin
 {
 	// -------------------------------------------- //
 	// REGEN
