@@ -145,7 +145,7 @@ public final class AbilityUtil
 		else
 		{
 			// This might be cruel but will actually help squash bugs faster.
-			throw new RuntimeException("Passed abiliy does not have a valid ability type");
+			throw new RuntimeException("Passed abiliy does not have a valid ability type.");
 		}
 		
 		if (other == CANCEL)
@@ -177,12 +177,22 @@ public final class AbilityUtil
 		AbilityDeactivateEvent deactivateEvent = new AbilityDeactivateEvent(ability, dplayer);
 		if ( ! deactivateEvent.runEvent()) return;
 		
-		ability.onDeactivate(dplayer, other);
-		dplayer.setActivatedAbility(Optional.empty());
-		
-		if(ability.hasCooldown())
+		try
 		{
-			dplayer.setCooldownExpireInMillis(ability.getCooldownMillis());
+			ability.onDeactivate(dplayer, other);
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+		}
+		finally
+		{
+			dplayer.setActivatedAbility(Optional.empty());
+		
+			if(ability.hasCooldown())
+			{
+				dplayer.setCooldownExpireInMillis(ability.getCooldownMillis());
+			}
 		}
 	}
 	
@@ -194,12 +204,22 @@ public final class AbilityUtil
 	{
 		Validate.isTrue(ability.getType() == AbilityType.PASSIVE, "abilitytype must be passive");
 	
-		final Object obj = ability.onActivate(dplayer, other);
-		if (obj == CANCEL) return CANCEL;
+		final Object obj = CANCEL;
 		
-		if(ability.hasCooldown())
+		try
 		{
-			dplayer.setCooldownExpireInMillis(ability.getCooldownMillis());
+			ability.onActivate(dplayer, other);
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+		}
+		finally
+		{
+			if(ability.hasCooldown() && obj != CANCEL)
+			{
+				dplayer.setCooldownExpireInMillis(ability.getCooldownMillis());
+			}
 		}
 		
 		return obj;
@@ -212,12 +232,25 @@ public final class AbilityUtil
 
 		dplayer.setActivatedAbility(Optional.of(ability));
 
-		final Object obj = ability.onActivate(dplayer, other);
-		if (obj == CANCEL) return CANCEL;
+		final Object obj = CANCEL;
 		
-		int duration = ability.getDurationMillis(dplayer.getLvl(ability.getSkill()));
-		ScheduledDeactivate sd = new ScheduledDeactivate(dplayer, duration, other);
-		sd.schedule();
+		try
+		{
+			ability.onActivate(dplayer, other);
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+		}
+		finally
+		{
+			if(obj != CANCEL)
+			{
+				int duration = ability.getDurationMillis(dplayer.getLvl(ability.getSkill()));
+				ScheduledDeactivate sd = new ScheduledDeactivate(dplayer, duration, other);
+				sd.schedule();
+			}
+		}
 		
 		return obj;
 	}
