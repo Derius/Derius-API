@@ -61,6 +61,9 @@ public interface DLang
 	public String getMustHaveEnoughStamina();
 	public void setMustHaveEnoughStamina(String mustHaveEnoughStamina);
 
+	public String getDesc();
+	public void setDesc(String desc);
+	
 	// -------------------------------------------- //
 	// ABILITIES
 	// -------------------------------------------- //
@@ -154,6 +157,28 @@ public interface DLang
 	public void setSpecialisationInfo(String specialisationInfo);
 
 	// -------------------------------------------- //
+	// SCOREBOARD
+	// -------------------------------------------- //
+	
+	public String getScoreBoardSettingKeepAlready();
+	public void setScoreBoardSettingKeepAlready(String scoreBoardSettingAlready);
+	
+	public String getScoreBoardSettingKeepSetByOther();
+	public void setScoreBoardSettingKeepSetByOther( String scoreBoardSettingSetByOther);
+	
+	public String getScoreBoardSettingKeepSet();
+	public void setScoreBoardSettingKeepSet(String scoreBoardSettingSet);
+	
+	public String getScoreBoardSettingShowAlready();
+	public void setScoreBoardSettingShowAlready(String scoreBoardSettingAlready);
+	
+	public String getScoreBoardSettingShowSetByOther();
+	public void setScoreBoardSettingShowSetByOther( String scoreBoardSettingSetByOther);
+	
+	public String getScoreBoardSettingShowSet();
+	public void setScoreBoardSettingShowSet(String scoreBoardSettingSet);
+	
+	// -------------------------------------------- //
 	// CHAT KEYS
 	// -------------------------------------------- //
 	
@@ -172,6 +197,16 @@ public interface DLang
 	public String getKeysClearSuccess();
 	public void setKeysClearSuccess(String keysClearSuccess);
 
+	// -------------------------------------------- //
+	// STAMINA
+	// -------------------------------------------- //
+	
+	public String getStaminaIsAlready();
+	public void setStaminaIsAlready(String staminaIsAlready);
+	
+	public String getStaminaSet();
+	public void setStaminaSet(String staminaSet);
+	
 	// -------------------------------------------- //
 	// TITLE TIMES
 	// -------------------------------------------- //
