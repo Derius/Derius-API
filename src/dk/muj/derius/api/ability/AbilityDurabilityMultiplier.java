@@ -7,10 +7,7 @@ import java.util.OptionalDouble;
 
 import org.bukkit.Material;
 
-import com.massivecraft.massivecore.util.MUtil;
-
 import dk.muj.derius.api.player.DPlayer;
-import dk.muj.derius.api.util.AbilityUtil;
 import dk.muj.derius.api.util.LevelUtil;
 
 /* 
@@ -42,7 +39,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 	public Optional<String> getLvlDescriptionMsg(int lvl)
 	{
 		OptionalDouble optMultiplier = LevelUtil.getLevelSettingFloat(this.getDurabilityMultiplier(), lvl);
-		if ( ! optMultiplier.isPresent()) return Optional.of("<i>No change");
+		if ( ! optMultiplier.isPresent()) return Optional.empty();
 		double multiplier = optMultiplier.getAsDouble();
 		return Optional.of(String.format("<i>{toolname} durability multiplied by <h>%.2f".replace("{toolname}", this.getToolName()), multiplier));
 	}
@@ -50,15 +47,9 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 	@Override
 	public Object onActivate(DPlayer dplayer, Object other)
 	{
-		if ( ! (other instanceof Number))return AbilityUtil.CANCEL;
-		double multiplier = ((Number) other).doubleValue();
-		
-		
-		// EXAMPLES: 1 / 3 = 0.333 so if multiplier is 3 in every third case damage occurs
-		// EXAMPLES: 1 / 0.333 = 3 so if multiplier is lower than 1. Damage will be multiplied.
-		int damage = (int) MUtil.probabilityRound(1D / multiplier);
-		
-		return damage;
+		// All the logic is done in the core.
+		// So the event is only thrown when actually activated.
+		return other;
 	}
 	
 	@Override

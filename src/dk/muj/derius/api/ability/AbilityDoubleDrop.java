@@ -45,11 +45,11 @@ public abstract class AbilityDoubleDrop extends AbilityAbstract
 	{
 		Block block = (Block) obj;
 		ItemStack inHand = dplayer.getPlayer().getItemInHand();
-		Location blockLoc = block.getLocation();
+		Location loc = block.getLocation();
 		
 		for(ItemStack item : block.getDrops(inHand))
 		{
-			block.getWorld().dropItem(blockLoc, item);
+			loc.getWorld().dropItem(loc, item);
 		}
 		
 		return obj;
