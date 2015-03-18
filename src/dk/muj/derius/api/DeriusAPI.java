@@ -247,43 +247,79 @@ public class DeriusAPI
 	// BLOCK MIXIN
 	// -------------------------------------------- //
 	
+	/**
+	 * Checks whether the block at this PS was placed by a player.
+	 * @param {PS} The PS in question
+	 * @return {boolean} true if it was placed by a player.
+	 */
 	public static boolean isBlockPlacedByPlayer(PS ps)
 	{
 		return getBlockMixin().isBlockPlacedByPlayer(ps);
 	}
 	
 	// Default
+	/**
+	 * Checks whether that block was placed by a player.
+	 * @param {Block} The block in question
+	 * @return {boolean} true if it was placed by a player.
+	 */
 	public static boolean isBlockPlacedByPlayer(Block block)
 	{
 		return getBlockMixin().isBlockPlacedByPlayer(block);
 	}
 	
+	/**
+	 * Checks whether the block at this location was placed by a player.
+	 * @param {Location} The location in question
+	 * @return {boolean} true if it was placed by a player.
+	 */
 	public static boolean isBlockPlacedByPlayer(Location loc)
 	{
 		return getBlockMixin().isBlockPlacedByPlayer(loc);
 	}
 	
 	// Listening
+	/**
+	 * Gives the materials which are currently listened for.
+	 * @return {Set<Material>} The set of materials.
+	 */
 	public static Set<Material> getBlocksTypesToListenFor()
 	{
 		return getBlockMixin().getBlocksTypesToListenFor();
 	}
 	
+	/**
+	 * Sets the materials which are listening for.
+	 * @param {Collection<Material>} The Collection of materials you want to set it to
+	 */
 	public static void setBlocksTypesToListenFor(Collection<Material> blocks)
 	{
 		getBlockMixin().setBlocksTypesToListenFor(blocks);
 	}
 	
-	public static void addBlockTypesToListenFor(Collection<Material> blocks)
+	/**
+	 * Add the materials passed in to the current Set of materials to listen for.
+	 * @param {Collection<Material>} The collection of Materials you want to add
+	 */
+	public static void addBlockTypesToListenFor(Collection<Material> materials)
 	{
-		getBlockMixin().addBlockTypesToListenFor(blocks);
+		getBlockMixin().addBlockTypesToListenFor(materials);
 	}
 	
-	public static void addBlockTypesToListenFor(Material... blocks)
+	/**
+	 * Add the materials passed in to the current Set of materials to listen for.
+	 * @param {Material...} The Array of Materials you want to add
+	 */
+	public static void addBlockTypesToListenFor(Material... materials)
 	{
-		getBlockMixin().addBlockTypesToListenFor(blocks);
+		getBlockMixin().addBlockTypesToListenFor(materials);
 	}
 	
+	/**
+	 * Evaluates whether this material is listened for or not.
+	 * @param {Material} The material you want to check
+	 * @return {boolean} whether or not it is listened for
+	 */
 	public static boolean isListenedFor(Material material)
 	{
 		return getBlockMixin().isListenedFor(material);
