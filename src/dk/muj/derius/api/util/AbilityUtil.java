@@ -161,7 +161,7 @@ public final class AbilityUtil
 	}
 	
 	/**
-	 * Deactivates an ability for dplayer player.
+	 * Deactivates an ability for passed player.
 	 * This should however automatically be done by our scheduled tasks.
 	 * @param {DPlayer} player to deactivate ability on
 	 * @param {Ability} the ability to deactivate

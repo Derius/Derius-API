@@ -44,7 +44,7 @@ public class PlayerExpTakeEvent extends DeriusEvent implements Cancellable, DPla
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	public PlayerExpTakeEvent(DPlayer dplayer, Skill skill, long expAmount)
+	public PlayerExpTakeEvent(DPlayer dplayer, Skill skill, double expAmount)
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(skill, "skill mustn't be null");

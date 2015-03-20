@@ -28,14 +28,14 @@ public interface DPlayer
 	 * @param {Skill} the skill
 	 * @param {long} the amount to add to players exp
 	 */
-	public void addExp(Skill skill, long exp);
+	public void addExp(Skill skill, double exp);
 	
 	/**
 	 * Takes users exp in said skill.
 	 * @param {Skill} the skill
 	 * @param {long} the amount of exp to take away.
 	 */
-	public void takeExp(Skill skill, long exp);
+	public void takeExp(Skill skill, double exp);
 	
 	// -------------------------------------------- //
 	// FIELD: STAMINA
