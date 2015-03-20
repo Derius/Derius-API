@@ -62,6 +62,7 @@ public abstract class AbilityDoubleDrop extends AbilityAbstract
 	// -------------------------------------------- //
 	
 	public abstract Collection<Material> getBlockTypes();
+	public abstract Collection<Material> getToolTypes();
 	public abstract int getLevelsPerPercent();
 
 }
