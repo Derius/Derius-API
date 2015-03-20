@@ -204,11 +204,11 @@ public final class AbilityUtil
 	{
 		Validate.isTrue(ability.getType() == AbilityType.PASSIVE, "abilitytype must be passive");
 	
-		final Object obj = CANCEL;
+		Object obj = CANCEL;
 		
 		try
 		{
-			ability.onActivate(dplayer, other);
+			obj = ability.onActivate(dplayer, other);
 		}
 		catch(Throwable t)
 		{
