@@ -25,6 +25,7 @@ public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
 
 	public AbilityDurabilityMultiplier()
 	{
+		this.setName("Carefull {skillname}".replace("{skillname}", this.getSkill().getName()));
 		this.setDesc("Extends {toolname} durability".replace("{toolname}", this.getToolName()));
 
 		this.setType(AbilityType.PASSIVE);
