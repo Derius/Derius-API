@@ -11,13 +11,13 @@ public interface ReqNoAbility extends Req
 	// -------------------------------------------- //
 	
 	@Override
-	public default boolean apply(DPlayer dplayer, Ability ability)
+	public default boolean apply(DPlayer dplayer, Ability<?> ability)
 	{
 		throw new UnsupportedOperationException("This req doesn't support abilities.");
 	}
 	
 	@Override
-	public default String createErrorMessage(DPlayer dplayer, Ability ability)
+	public default String createErrorMessage(DPlayer dplayer, Ability<?> ability)
 	{
 		throw new UnsupportedOperationException("This req doesn't support abilities.");
 	}

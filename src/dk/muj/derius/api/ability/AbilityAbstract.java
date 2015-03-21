@@ -16,7 +16,7 @@ import dk.muj.derius.api.config.DLang;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.util.AbilityUtil;
 
-public abstract class AbilityAbstract implements Ability
+public abstract class AbilityAbstract<P> implements Ability<P>
 {
 	// -------------------------------------------- //
 	// FIELDS
@@ -77,7 +77,7 @@ public abstract class AbilityAbstract implements Ability
 	// -------------------------------------------- //
 	
 	@Override
-	public Ability load(Ability that)
+	public Ability<?> load(Ability<?> that)
 	{
 		if (that == null || that == this) return that;
 		

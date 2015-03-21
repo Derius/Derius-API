@@ -130,7 +130,7 @@ public class DeriusAPI
 	 * Gets all registered abilities
 	 * @return{Collection<? extends Ability>} all abilities
 	 */
-	public static Collection< ? extends Ability> getAllAbilities()
+	public static Collection< ? extends Ability<?>> getAllAbilities()
 	{
 		return getCoreEnsured().getAllAbilities();
 	}
@@ -140,12 +140,12 @@ public class DeriusAPI
 	 * @param {String} id of the ability you want to get.
 	 * @return {Ability} the ability
 	 */
-	public static Ability getAbility(String id)
+	public static Ability<?> getAbility(String id)
 	{
 		return getCoreEnsured().getAbility(id);
 	}
 	
-	public static void registerAbility(Ability ability)
+	public static void registerAbility(Ability<?> ability)
 	{
 		getCoreEnsured().registerAbility(ability);
 	}

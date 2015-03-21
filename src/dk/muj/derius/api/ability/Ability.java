@@ -11,7 +11,7 @@ import dk.muj.derius.api.Req;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
 
-public interface Ability extends Registerable
+public interface Ability<P> extends Registerable
 {
 	// -------------------------------------------- //
 	// ID
@@ -43,7 +43,7 @@ public interface Ability extends Registerable
 	 * Used for database stuff. You should just extend DeriusSkill
 	 * and not care about this method.
 	 */
-	public Ability load(Ability that);
+	public Ability<?> load(Ability<?> that);
 	
 	// -------------------------------------------- //
 	// FIELD: ENABLED
@@ -321,7 +321,7 @@ public interface Ability extends Registerable
 	 */
 	public Optional<String> getLvlDescriptionMsg(int lvl);
 	
-	// Ability Execution methods
+	// Ability<?> Execution methods
 	/**
 	 * This is the method called by Derius to run your ability. 
 	 * It is similar to bukkits onEnable method.
@@ -329,7 +329,7 @@ public interface Ability extends Registerable
 	 * @param {Object} other parameter used in some abilities
 	 * @return {Object} this object will be passed to onDeactivate for data transferring.
 	 */
-	public Object onActivate(DPlayer dplayer, Object other);
+	public Object onActivate(DPlayer dplayer, P other);
 	
 	/**
 	 * This is the method called by Derius when your ability

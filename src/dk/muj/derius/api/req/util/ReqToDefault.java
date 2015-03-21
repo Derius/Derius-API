@@ -28,13 +28,13 @@ public interface ReqToDefault extends Req
 	// -------------------------------------------- //
 	
 	@Override
-	public default boolean apply(DPlayer dplayer, Ability ability)
+	public default boolean apply(DPlayer dplayer, Ability<?> ability)
 	{
 		return this.apply(dplayer);
 	}
 
 	@Override
-	public default String createErrorMessage(DPlayer dplayer, Ability ability)
+	public default String createErrorMessage(DPlayer dplayer, Ability<?> ability)
 	{
 		return this.createErrorMessage(dplayer);
 	}

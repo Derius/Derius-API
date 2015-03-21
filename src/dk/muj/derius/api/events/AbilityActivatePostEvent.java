@@ -28,8 +28,8 @@ public class AbilityActivatePostEvent extends DeriusEvent implements AbilityEven
 	// FIELDS
 	// -------------------------------------------- //
 	
-	private final Ability ability;
-	public Ability getAbility() { return ability; }
+	private final Ability<?> ability;
+	public Ability<?> getAbility() { return ability; }
 	
 	private DPlayer dplayer;
 	public DPlayer getDPlayer() { return dplayer; }
@@ -44,7 +44,7 @@ public class AbilityActivatePostEvent extends DeriusEvent implements AbilityEven
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	public AbilityActivatePostEvent(Ability ability, DPlayer dplayer, Object other)
+	public AbilityActivatePostEvent(Ability<?> ability, DPlayer dplayer, Object other)
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");

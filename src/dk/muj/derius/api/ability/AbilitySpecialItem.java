@@ -22,7 +22,7 @@ import dk.muj.derius.api.req.ReqCooldownIsExpired;
  * Automatic activation can however be disabled by returning,
  * empty collections in the abstract methods.
  */
-public abstract class AbilitySpecialItem extends AbilityAbstract
+public abstract class AbilitySpecialItem extends AbilityAbstract<Object>
 {
 	// -------------------------------------------- //
 	// CONSTRUCT

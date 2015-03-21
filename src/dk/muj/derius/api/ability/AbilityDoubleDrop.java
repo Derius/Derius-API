@@ -14,7 +14,7 @@ import dk.muj.derius.api.player.DPlayer;
  * This class is for abilites that just provide a double drop.
  * It will minimise duplicate code and also automatically activate.
  */
-public abstract class AbilityDoubleDrop extends AbilityAbstract
+public abstract class AbilityDoubleDrop extends AbilityAbstract<Block>
 {
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -41,9 +41,8 @@ public abstract class AbilityDoubleDrop extends AbilityAbstract
 	}
 
 	@Override
-	public Object onActivate(DPlayer dplayer, Object obj)
+	public Object onActivate(DPlayer dplayer, Block block)
 	{
-		Block block = (Block) obj;
 		ItemStack inHand = dplayer.getPlayer().getItemInHand();
 		Location loc = block.getLocation();
 		
@@ -52,7 +51,7 @@ public abstract class AbilityDoubleDrop extends AbilityAbstract
 			loc.getWorld().dropItem(loc, item);
 		}
 		
-		return obj;
+		return block;
 	}
 
 	@Override public void onDeactivate(DPlayer dplayer, Object other) { }

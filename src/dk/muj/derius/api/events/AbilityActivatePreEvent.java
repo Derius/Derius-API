@@ -28,8 +28,8 @@ public class AbilityActivatePreEvent extends DeriusEvent implements Cancellable,
 	// FIELDS
 	// -------------------------------------------- //
 	
-	private final Ability ability;
-	public Ability getAbility() { return ability; }
+	private final Ability<?> ability;
+	public Ability<?> getAbility() { return ability; }
 	
 	private DPlayer dplayer;
 	public DPlayer getDPlayer() { return dplayer; }
@@ -42,7 +42,7 @@ public class AbilityActivatePreEvent extends DeriusEvent implements Cancellable,
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	public AbilityActivatePreEvent(Ability ability, DPlayer dplayer)
+	public AbilityActivatePreEvent(Ability<?> ability, DPlayer dplayer)
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");

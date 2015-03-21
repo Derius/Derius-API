@@ -36,7 +36,7 @@ public class ReqAbilityCanBeUsedInArea implements Req, ReqNoSkill, ReqNoDefault
 	// -------------------------------------------- //
 	
 	@Override
-	public boolean apply(DPlayer dplayer, Ability ability)
+	public boolean apply(DPlayer dplayer, Ability<?> ability)
 	{
 		if ( ! dplayer.isPlayer()) return false;
 		Location loc = dplayer.getPlayer().getLocation();
@@ -45,7 +45,7 @@ public class ReqAbilityCanBeUsedInArea implements Req, ReqNoSkill, ReqNoDefault
 	}
 
 	@Override
-	public String createErrorMessage(DPlayer dplayer, Ability ability)
+	public String createErrorMessage(DPlayer dplayer, Ability<?> ability)
 	{
 		return Txt.parse("<b>The ability <reset>%s <b>can't be used in this area", ability.getDisplayName(dplayer));
 	}

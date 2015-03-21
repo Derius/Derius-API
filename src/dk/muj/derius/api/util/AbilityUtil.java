@@ -49,7 +49,7 @@ public final class AbilityUtil
 	 * @param {VerboseLevel} verboselevel for error message @see dk.muj.derius.api.VerboseLevel
 	 * @return {boolean} true if the player can use said ability
 	 */
-	public static boolean canPlayerActivateAbility(DPlayer dplayer, Ability ability, VerboseLevel verboseLevel)
+	public static boolean canPlayerActivateAbility(DPlayer dplayer, Ability<?> ability, VerboseLevel verboseLevel)
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");
@@ -77,7 +77,7 @@ public final class AbilityUtil
 	 * @param {VerboseLevel} verboselevel for error message @see dk.muj.derius.api.VerboseLevel
 	 * @return {boolean} true if the player can see said ability
 	 */
-	public static boolean canPlayerSeeAbility(DPlayer dplayer, Ability ability, VerboseLevel verboseLevel)
+	public static boolean canPlayerSeeAbility(DPlayer dplayer, Ability<?> ability, VerboseLevel verboseLevel)
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");
@@ -104,13 +104,14 @@ public final class AbilityUtil
 	/**
 	 * Activates an ability
 	 * This is the proper way to activate an ability
+	 * @param <P>
 	 * @param {DPlayer} player to activate ability on
 	 * @param {Ability} the ability to activate
 	 * @param {Object} some abilities need another object. Check for the individual ability
 	 * @param {boolean} inform the player if not allowed
 	 * @param {VerboseLevel} the verboselevel for checking if player can activate this skill.
 	 */
-	public static Object activateAbility(DPlayer dplayer, final Ability ability, Object other, VerboseLevel verboseLevel)
+	public static <P> Object activateAbility(DPlayer dplayer, final Ability<P> ability, P param, VerboseLevel verboseLevel)
 	{	
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");
@@ -134,14 +135,16 @@ public final class AbilityUtil
 		DeriusAPI.debug(5000, "<i>The player <h>%s <i>activated the ability <h>%s",
 				dplayer.getDisplayName(IdUtil.CONSOLE_ID), ability.getName());
 		
+		Object other;
+		
 		// ACTIVATE
 		if (ability.getType() == AbilityType.PASSIVE)
 		{
-			other = activatePassiveAbility(dplayer, ability, other);
+			other = activatePassiveAbility(dplayer, ability, param);
 		}
 		else if (ability.getType() == AbilityType.ACTIVE)
 		{
-			other = activateActiveAbility(dplayer, ability, other);
+			other = activateActiveAbility(dplayer, ability, param);
 		}
 		else
 		{
@@ -172,9 +175,9 @@ public final class AbilityUtil
 	{
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		
-		Optional<Ability> optActivated = dplayer.getActivatedAbility();
+		Optional<Ability<?>> optActivated = dplayer.getActivatedAbility();
 		if ( ! optActivated.isPresent()) throw new IllegalStateException("The player does not currently have a enabled ability");
-		Ability ability = optActivated.get();
+		Ability<?> ability = optActivated.get();
 		
 		AbilityDeactivateEvent deactivateEvent = new AbilityDeactivateEvent(ability, dplayer);
 		if ( ! deactivateEvent.runEvent()) return;
@@ -202,7 +205,7 @@ public final class AbilityUtil
 	// ACTIVATION: PRIVATE
 	// -------------------------------------------- //
 	
-	private static Object activatePassiveAbility(DPlayer dplayer, final Ability ability, Object other)
+	private static <P> Object activatePassiveAbility(DPlayer dplayer, final Ability<P> ability, P other)
 	{
 		Validate.isTrue(ability.getType() == AbilityType.PASSIVE, "abilitytype must be passive");
 	
@@ -227,7 +230,7 @@ public final class AbilityUtil
 		return obj;
 	}
 	
-	private static Object activateActiveAbility(final DPlayer dplayer, final Ability ability, Object other)
+	private static <P> Object activateActiveAbility(final DPlayer dplayer, final Ability<P> ability, P other)
 	{
 		Validate.isTrue(ability.getType() == AbilityType.ACTIVE, "abilitytype must be active");
 		if (dplayer.hasActivatedAny()) return CANCEL;

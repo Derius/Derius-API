@@ -5,6 +5,6 @@ import dk.muj.derius.api.ability.Ability;
 public interface AbilityEvent
 {
 	// Abstract
-	public Ability getAbility();
+	public Ability<?> getAbility();
 	
 }

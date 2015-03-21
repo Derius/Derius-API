@@ -52,13 +52,13 @@ public class ReqIsEnabled implements Req, ReqNoDefault
 	// -------------------------------------------- //
 	
 	@Override
-	public boolean apply(DPlayer dplayer, Ability ability)
+	public boolean apply(DPlayer dplayer, Ability<?> ability)
 	{
 		return ability.isEnabled();
 	}
 
 	@Override
-	public String createErrorMessage(DPlayer dplayer, Ability ability)
+	public String createErrorMessage(DPlayer dplayer, Ability<?> ability)
 	{
 		return Txt.parse(DLang.get().getAbilityDisabled().replace("{ability}", ability.getDisplayName(dplayer)));
 	}

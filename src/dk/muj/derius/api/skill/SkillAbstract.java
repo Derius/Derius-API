@@ -37,8 +37,8 @@ public abstract class SkillAbstract implements Skill
 	@Override public boolean getEnabled() { return this.enabled; }
 	
 	// Abilities
-	private transient List<Ability> abilities = new CopyOnWriteArrayList<>();
-	@Override public List<Ability> getAbilities() { return this.abilities; }
+	private transient List<Ability<?>> abilities = new CopyOnWriteArrayList<>();
+	@Override public List<Ability<?>> getAbilities() { return this.abilities; }
 	
 	// -------------------------------------------- //
 	// FIELDS: DESCRIPTIVE

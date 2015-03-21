@@ -17,7 +17,7 @@ import dk.muj.derius.api.util.LevelUtil;
  * Furthermore these abilites will automatically
  * be handled/activated if they are activated.
  */
-public abstract class AbilityDurabilityMultiplier extends AbilityAbstract
+public abstract class AbilityDurabilityMultiplier extends AbilityAbstract<Object>
 {
 	// -------------------------------------------- //
 	// CONSTRUCT

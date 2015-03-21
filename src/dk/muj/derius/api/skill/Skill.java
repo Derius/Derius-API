@@ -381,7 +381,7 @@ public interface Skill extends Registerable
 	 * Gets the list of abilities in this skill with a specific type.
 	 * @return {List<Ability>} all active abilities related to this skill
 	 */
-	public default List<Ability> getAbilitiesOfType(AbilityType type)
+	public default List<Ability<?>> getAbilitiesOfType(AbilityType type)
 	{
 		return this.getAbilities().stream().filter(a -> a.getType() == type).collect(Collectors.toList());
 	}
@@ -390,6 +390,6 @@ public interface Skill extends Registerable
 	 * Gets the list of all abilities related to skill
 	 * @return {List<Ability>} all abilities related to this skill
 	 */
-	public abstract List<Ability> getAbilities();
+	public abstract List<Ability<?>> getAbilities();
 	
 }

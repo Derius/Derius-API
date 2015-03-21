@@ -77,20 +77,20 @@ public interface Derius
 	 * Gets all registered abilities
 	 * @return{Collection<? extends Ability>} all abilities
 	 */
-	public abstract Collection< ? extends Ability> getAllAbilities();
+	public abstract Collection< ? extends Ability<?>> getAllAbilities();
 	
 	/**
 	 * Gets the ability corresponding to passed id-
 	 * @param {String} id of the ability you want to get.
 	 * @return {Ability} the ability
 	 */
-	public abstract Ability getAbility(String id);
+	public abstract Ability<?> getAbility(String id);
 	
 	/**
 	 * Registers an ability into the system.
 	 * @param {Ability} ability to register.
 	 */
-	public abstract void registerAbility(Ability ability);
+	public abstract void registerAbility(Ability<?> ability);
 	
 	// -------------------------------------------- //
 	// EXP

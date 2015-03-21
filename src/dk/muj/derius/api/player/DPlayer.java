@@ -314,14 +314,14 @@ public interface DPlayer
 	 * null if no ability is activated
 	 * @return {Ability} the ability which is activated. null if none
 	 */
-	public Optional<Ability> getActivatedAbility();
+	public Optional<Ability<?>> getActivatedAbility();
 	
 	/**
 	 * Gets the id of the activated ability
 	 * null if no ability is activated
 	 * @return {Ability} the ability which is activated. null if none
 	 */
-	public void setActivatedAbility(Optional<Ability> ability);
+	public void setActivatedAbility(Optional<Ability<?>> ability);
 	
 	// -------------------------------------------- //
 	// SENDER/PLAYER METHODS

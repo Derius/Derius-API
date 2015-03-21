@@ -35,13 +35,13 @@ public class ReqHasEnoughStamina implements Req, ReqNoSkill, ReqNoDefault
 	// -------------------------------------------- //
 	
 	@Override
-	public boolean apply(DPlayer dplayer, Ability ability)
+	public boolean apply(DPlayer dplayer, Ability<?> ability)
 	{
 		return dplayer.hasEnoughStamina(ability.getStaminaUsage());
 	}
 
 	@Override
-	public String createErrorMessage(DPlayer dplayer, Ability ability)
+	public String createErrorMessage(DPlayer dplayer, Ability<?> ability)
 	{
 		return Txt.parse(DLang.get().getMustHaveEnoughStamina().replace("{ability}", ability.getDisplayName(dplayer)));
 	}

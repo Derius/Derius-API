@@ -21,8 +21,8 @@ public class AbilityRegisteredEvent extends DeriusEvent implements Cancellable, 
 	// FIELDS
 	// -------------------------------------------- //
 	
-	private final Ability ability;
-	public Ability getAbility() { return ability; }
+	private final Ability<?> ability;
+	public Ability<?> getAbility() { return ability; }
 	
 	private boolean cancelled = false;
 	public boolean isCancelled() { return this.cancelled; }
@@ -32,7 +32,7 @@ public class AbilityRegisteredEvent extends DeriusEvent implements Cancellable, 
 	// CONSTRUCT
 	// -------------------------------------------- //
 	
-	public AbilityRegisteredEvent(Ability ability)
+	public AbilityRegisteredEvent(Ability<?> ability)
 	{
 		Validate.notNull(ability, "ability mustn't be null");
 		

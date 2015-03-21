@@ -15,9 +15,9 @@ public interface Req
 	public abstract boolean apply(DPlayer dplayer, Skill skill);
 	public abstract  String createErrorMessage(DPlayer dplayer, Skill skill);
 	
-	// Ability requirements
-	public abstract  boolean apply(DPlayer dplayer, Ability ability);
-	public abstract  String createErrorMessage(DPlayer dplayer, Ability ability);
+	// Ability<?> requirements
+	public abstract  boolean apply(DPlayer dplayer, Ability<?> ability);
+	public abstract  String createErrorMessage(DPlayer dplayer, Ability<?> ability);
 	
 	// Default
 	public abstract  boolean apply(DPlayer dplayer);
