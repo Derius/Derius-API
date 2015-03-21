@@ -49,7 +49,7 @@ public class ReqCooldownIsExpired implements Req, ReqToDefault
 		LinkedHashMap<TimeUnit, Long> ageUnitcounts = TimeDiffUtil.unitcounts(expireMillis, TimeUnit.getAllButMillis());
 		String expireDesc = TimeDiffUtil.formatedVerboose(ageUnitcounts, "<i>");
 		
-		return Txt.parse(DLang.get().getPrefix() + " " + DLang.get().getExhausted().replace("{time}", expireDesc));
+		return Txt.parse(DLang.get().getExhausted().replace("{time}", expireDesc));
 	}
 	
 }
