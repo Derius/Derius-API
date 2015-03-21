@@ -66,6 +66,8 @@ public abstract class AbilitySpecialItem extends AbilityAbstract
 		
 		this.getSpecialItemManager().toSpecial(inHand);
 		
+		player.setItemInHand(inHand);
+		
 		player.updateInventory();
 		return player.getItemInHand();
 	}
