@@ -122,13 +122,14 @@ public final class AbilityUtil
 		
 		// CHECKS
 		if ( ! AbilityUtil.canPlayerActivateAbility(dplayer, ability, verboseLevel)) return CANCEL;
-		
-		// STAMINA
-		dplayer.takeStamina(ability.getStaminaUsage());
-		
+
 		// EVENT
 		AbilityActivatePreEvent preEvent = new AbilityActivatePreEvent(ability, dplayer);
 		if ( ! preEvent.runEvent()) return CANCEL;
+		
+		
+		// STAMINA
+		dplayer.takeStamina(ability.getStaminaUsage());
 		
 		DeriusAPI.debug(5000, "<i>The player <h>%s <i>activated the ability <h>%s",
 				dplayer.getDisplayName(IdUtil.CONSOLE_ID), ability.getName());
@@ -155,6 +156,7 @@ public final class AbilityUtil
 		}
 		
 		AbilityActivatePostEvent postEvent = new AbilityActivatePostEvent(ability, dplayer, other);
+		postEvent.getOther();
 		other = postEvent.getOther();
 		
 		return other;
@@ -232,11 +234,11 @@ public final class AbilityUtil
 
 		dplayer.setActivatedAbility(Optional.of(ability));
 
-		final Object obj = CANCEL;
+		Object obj = CANCEL;
 		
 		try
 		{
-			ability.onActivate(dplayer, other);
+			obj = ability.onActivate(dplayer, other);
 		}
 		catch(Throwable t)
 		{
