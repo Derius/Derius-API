@@ -1,14 +1,14 @@
 package dk.muj.derius.api.inventory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import com.massivecraft.massivecore.util.MUtil;
 
 /*
  * This SpecialItemManager adds an removes an enchant from the item.
@@ -79,13 +79,14 @@ public abstract class SpecialItemManagerEnchant implements SpecialItemManager
 	public boolean matches(ItemStack item)
 	{
 		Validate.notNull(item, "item mustn't be null");
-		return MUtil.isSpade(item);
+		return this.getToolTypes().contains(item.getType());
 	}
 	
 	// -------------------------------------------- //
 	// ABSTRACT
 	// -------------------------------------------- //
 	
+	public abstract Collection<Material> getToolTypes();
 	public abstract String getLoreTag();
 	public abstract Enchantment getEnchantment();
 	public abstract int getBuff();
