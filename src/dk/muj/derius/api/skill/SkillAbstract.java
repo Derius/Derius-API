@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
@@ -117,7 +118,7 @@ public abstract class SkillAbstract implements Skill
 	// -------------------------------------------- //
 	
 	// Lambda, This is the default algorithm
-	private transient LvlStatusCalculator expToLvlStatus = LvlStatusCalculator.exponentialOf(1024, 1.01);
+	private transient LvlStatusCalculator expToLvlStatus = LvlStatusCalculator.exponentialOf(1024, 1.0025);
 	@Override public final LvlStatus getLvlStatusFromExp(long exp) { return this.expToLvlStatus.calculateLvlStatus(exp); }
 	@Override public final void setLvlStatusAlgorithm(LvlStatusCalculator algorithm) { this.expToLvlStatus = algorithm; }
 	@Override public final LvlStatusCalculator getLvlStatusAlgorithm() { return this.expToLvlStatus; }
