@@ -1,6 +1,5 @@
 package dk.muj.derius.api.lvl;
 
-
 public class LvlStatusCalculatorExponential implements LvlStatusCalculator
 {
 	// -------------------------------------------- //

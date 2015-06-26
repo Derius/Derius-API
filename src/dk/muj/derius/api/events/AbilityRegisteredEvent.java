@@ -13,9 +13,8 @@ public class AbilityRegisteredEvent extends DeriusEvent implements Cancellable, 
 	// -------------------------------------------- //
 	
 	private static final HandlerList handlers = new HandlerList();
-	@Override public HandlerList getHandlers() {	return handlers;	} 
-	public static HandlerList getHandlerList() {	return handlers;	}
-	
+	@Override public HandlerList getHandlers() { return handlers; } 
+	public static HandlerList getHandlerList() { return handlers; }
 	
 	// -------------------------------------------- //
 	// FIELDS
@@ -71,7 +70,7 @@ public class AbilityRegisteredEvent extends DeriusEvent implements Cancellable, 
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getAbility().hashCode()*prime;
+		result += this.getAbility().hashCode() * prime;
 		
 		return result;
 	}

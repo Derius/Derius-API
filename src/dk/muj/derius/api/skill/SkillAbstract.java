@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
@@ -117,6 +116,7 @@ public abstract class SkillAbstract implements Skill
 	// FIELDS: CALCULATIVE
 	// -------------------------------------------- //
 	
+	// TODO: Lambda is a 1.8 Feature. if we don't implement it ourselfs, we cannot keep it
 	// Lambda, This is the default algorithm
 	private transient LvlStatusCalculator expToLvlStatus = LvlStatusCalculator.exponentialOf(1024, 1.0025);
 	@Override public final LvlStatus getLvlStatusFromExp(long exp) { return this.expToLvlStatus.calculateLvlStatus(exp); }

@@ -90,9 +90,9 @@ public class PlayerExpTakeEvent extends DeriusEvent implements Cancellable, DPla
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getExpAmount()*prime;
-		result += this.getSkill().hashCode()*prime;
-		result += this.getDPlayer().hashCode()*prime;
+		result += this.getExpAmount() * prime;
+		result += this.getSkill().hashCode() * prime;
+		result += this.getDPlayer().hashCode() * prime;
 		
 		return result;
 	}

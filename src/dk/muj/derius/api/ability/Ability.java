@@ -1,7 +1,6 @@
 package dk.muj.derius.api.ability;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.massivecraft.massivecore.Registerable;
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
@@ -10,6 +9,7 @@ import dk.muj.derius.api.MillisLastCalculator;
 import dk.muj.derius.api.Req;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
+import dk.muj.derius.lib.optional.Optional;
 
 public interface Ability<P> extends Registerable
 {
@@ -50,7 +50,7 @@ public interface Ability<P> extends Registerable
 	// -------------------------------------------- //
 	
 	/**
-	 * Tells if this skill is enabled, is is also disabled if it's skill is disabled.
+	 * Tells if this skill is enabled.
 	 * To check the value of the field use Ability#getEnabled.
 	 * If not players can't use it AT ALL.
 	 * @return {boolean} true if skill is enabled

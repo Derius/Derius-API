@@ -9,7 +9,7 @@ import dk.muj.derius.api.skill.Skill;
 
 /**
  * If you register this exp will automatically be given,
- * when aplayer breaks certain block with certain tools.
+ * when a player breaks certain block with certain tools.
  */
 public interface BlockBreakExpGain
 {

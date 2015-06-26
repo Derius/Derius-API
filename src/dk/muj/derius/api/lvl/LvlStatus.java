@@ -1,8 +1,8 @@
 package dk.muj.derius.api.lvl;
 
-import java.util.OptionalInt;
-
 import javax.annotation.concurrent.Immutable;
+
+import dk.muj.derius.lib.optional.OptionalInt;
 
 
 /**
@@ -38,4 +38,5 @@ public interface LvlStatus
 
 	public OptionalInt  getExpToNextLvl ();
 	public LvlStatus withExpToNextLvl (OptionalInt  expToNextLvl);
+	
 }

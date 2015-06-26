@@ -38,7 +38,6 @@ public interface StaminaMixin
 	public abstract double sneakMultiplier(Player player);
 	public abstract double standStillMultiplier(Player player);
 	
-	
 	public default double getMultiplier(Player player)
 	{
 		if (player == null) return 0.0;

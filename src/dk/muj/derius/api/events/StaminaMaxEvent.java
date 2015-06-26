@@ -13,8 +13,8 @@ public class StaminaMaxEvent extends DeriusEvent implements DPlayerEvent
 	// -------------------------------------------- //
 	
 	private static final HandlerList handlers = new HandlerList();
-	@Override public HandlerList getHandlers() {	return handlers;	} 
-	public static HandlerList getHandlerList() {	return handlers;	}
+	@Override public HandlerList getHandlers() { return handlers; } 
+	public static HandlerList getHandlerList() { return handlers; }
 
 	// -------------------------------------------- //
 	// FIELDS
@@ -56,7 +56,7 @@ public class StaminaMaxEvent extends DeriusEvent implements DPlayerEvent
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getDPlayer().hashCode()*prime;
+		result += this.getDPlayer().hashCode() * prime;
 		
 		return result;
 	}

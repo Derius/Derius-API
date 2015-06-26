@@ -1,6 +1,8 @@
 package dk.muj.derius.api.player;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -9,6 +11,7 @@ import org.bukkit.entity.Player;
 import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.lvl.LvlStatus;
 import dk.muj.derius.api.skill.Skill;
+import dk.muj.derius.lib.optional.Optional;
 
 public interface DPlayer
 {
@@ -42,12 +45,6 @@ public interface DPlayer
 	// -------------------------------------------- //
 	
 	// RAW
-	///**
-	// * Sets the players stamina
-	// * @param {double} new amount of stamina
-	// */
-	//public void setStamina(double newStamina);
-	
 	/**
 	 * Gets players stamina.
 	 * @return {int} players stamina
@@ -215,7 +212,7 @@ public interface DPlayer
 	 * this is system millis
 	 * @param {long} the cooldown to set it to
 	 */
-	public void setCooldownExpire( long cooldownTime);
+	public void setCooldownExpire(long cooldownTime);
 
 	/**
 	 * Sets the Cooldown to run out the passed amount of millis in the future

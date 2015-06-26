@@ -7,7 +7,6 @@ import dk.muj.derius.api.VerboseLevel;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
 
-
 public class SkillUtil
 {
 	// -------------------------------------------- //

@@ -19,7 +19,6 @@ import dk.muj.derius.api.player.DPlayer;
 
 public interface Skill extends Registerable
 {
-	
 	// -------------------------------------------- //
 	// ID
 	// -------------------------------------------- //

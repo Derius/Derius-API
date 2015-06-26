@@ -2,7 +2,6 @@ package dk.muj.derius.api.ability;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.Optional;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,6 +14,7 @@ import com.massivecraft.massivecore.util.Txt;
 import dk.muj.derius.api.inventory.SpecialItemManager;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.req.ReqCooldownIsExpired;
+import dk.muj.derius.lib.optional.Optional;
 /*
  * This class is for abilities that make an item special,
  * while they are activated.

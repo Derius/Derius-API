@@ -41,7 +41,6 @@ public class ReqSpCooldownIsExpired implements Req, ReqToDefault
 	{
 		return dplayer.isSpecialisationCooldownExpired();
 	}
-	
 
 	@Override
 	public String createErrorMessage(DPlayer dplayer)
@@ -55,7 +54,6 @@ public class ReqSpCooldownIsExpired implements Req, ReqToDefault
 		msg = msg.replaceFirst("%s", DLang.get().getSpecialisationChangeCooldown().replace("{time}", spDesc));
 		
 		return Txt.parse(msg);
-
 	}
 
 }

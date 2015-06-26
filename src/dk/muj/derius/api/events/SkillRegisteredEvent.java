@@ -74,7 +74,7 @@ public class SkillRegisteredEvent extends DeriusEvent implements Cancellable, Sk
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getSkill().hashCode()*prime;
+		result += this.getSkill().hashCode() * prime;
 		
 		return result;
 	}

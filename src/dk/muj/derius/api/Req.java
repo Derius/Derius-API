@@ -4,7 +4,6 @@ import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
 
-
 public interface Req
 {
 	// -------------------------------------------- //

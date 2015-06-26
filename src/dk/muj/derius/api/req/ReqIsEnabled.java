@@ -12,7 +12,6 @@ import dk.muj.derius.api.skill.Skill;
 
 public class ReqIsEnabled implements Req, ReqNoDefault
 {
-
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //

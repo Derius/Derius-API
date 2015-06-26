@@ -15,8 +15,8 @@ public class PlayerToolPrepareEvent extends DeriusEvent implements Cancellable, 
 	// -------------------------------------------- //
 	
 	private static final HandlerList handlers = new HandlerList();
-	@Override public HandlerList getHandlers() {	return handlers;	} 
-	public static HandlerList getHandlerList() {	return handlers;	}
+	@Override public HandlerList getHandlers() { return handlers; } 
+	public static HandlerList getHandlerList() { return handlers; }
 	
 	// -------------------------------------------- //
 	// FIELDS
@@ -78,8 +78,8 @@ public class PlayerToolPrepareEvent extends DeriusEvent implements Cancellable, 
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getDPlayer().hashCode()*prime;
-		result += this.getTool().hashCode()*prime;
+		result += this.getDPlayer().hashCode() * prime;
+		result += this.getTool().hashCode() * prime;
 		
 		return result;
 	}

@@ -1,7 +1,6 @@
 package dk.muj.derius.api.ability;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,6 +8,7 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.lib.optional.Optional;
 
 /*
  * This class is for abilites that just provide a double drop.
@@ -36,7 +36,7 @@ public abstract class AbilityDoubleDrop extends AbilityAbstract<Block>
 	@Override
 	public Optional<String> getLvlDescriptionMsg(int lvl)
 	{
-		double percent = Math.min(100.0, (double) lvl/this.getLevelsPerPercent());
+		double percent = Math.min(100.0, (double) lvl / this.getLevelsPerPercent());
 		return Optional.of("<i>Chance to double drop: <h>" + String.valueOf(percent) + "%");
 	}
 

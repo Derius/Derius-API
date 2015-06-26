@@ -342,14 +342,17 @@ public class DeriusAPI
 	{
 		return getStaminaMixin().sprintMultiplier(player);
 	}
+	
 	public static double walkStaminaMultiplier(Player player)
 	{
 		return getStaminaMixin().walkMultiplier(player);
 	}
+	
 	public static double sneaStaminakMultiplier(Player player)
 	{
 		return getStaminaMixin().sneakMultiplier(player);
 	}
+	
 	public static double standStillStaminaMutiplier(Player player)
 	{
 		return getStaminaMixin().standStillMultiplier(player);

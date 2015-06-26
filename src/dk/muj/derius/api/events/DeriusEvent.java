@@ -50,7 +50,7 @@ public abstract class DeriusEvent extends Event implements Runnable
 	// -------------------------------------------- //
 	
 	/**
-	 * this is a smarter run, that will tell you whether or not it suceeded.
+	 * This is a smarter run, that will tell you whether or not it succeeded.
 	 * @return true if event was not cancelled
 	 */
 	public boolean runEvent()

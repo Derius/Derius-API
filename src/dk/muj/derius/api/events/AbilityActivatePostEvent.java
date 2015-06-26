@@ -49,7 +49,7 @@ public class AbilityActivatePostEvent extends DeriusEvent implements AbilityEven
 		Validate.notNull(dplayer, "dplayer mustn't be null");
 		Validate.notNull(ability, "ability mustn't be null");
 		
-		this.dplayer  = dplayer;
+		this.dplayer = dplayer;
 		this.ability = ability;
 		this.other = other;
 	}
@@ -87,8 +87,8 @@ public class AbilityActivatePostEvent extends DeriusEvent implements AbilityEven
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getDPlayer().hashCode()*prime;
-		result += this.getAbility().hashCode()*prime;
+		result += this.getDPlayer().hashCode() * prime;
+		result += this.getAbility().hashCode() * prime;
 		
 		return result;
 	}

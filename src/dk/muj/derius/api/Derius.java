@@ -51,13 +51,13 @@ public interface Derius
 	// -------------------------------------------- //
 	
 	/**
-	 * Gets all registered skills
+	 * Gets all registered skills.
 	 * @return{Collection<? extends Skill>} all skills
 	 */
 	public abstract Collection< ? extends Skill> getAllSkills();
 	
 	/**
-	 * Gets the skill corresponding to passed id-
+	 * Gets the skill corresponding to passed id.
 	 * @param {String} id of the skill you want to get.
 	 * @return {Skill} the skill
 	 */
@@ -80,7 +80,7 @@ public interface Derius
 	public abstract Collection< ? extends Ability<?>> getAllAbilities();
 	
 	/**
-	 * Gets the ability corresponding to passed id-
+	 * Gets the ability corresponding to passed id.
 	 * @param {String} id of the ability you want to get.
 	 * @return {Ability} the ability
 	 */
@@ -97,7 +97,7 @@ public interface Derius
 	// -------------------------------------------- //
 	
 	/**
-	 * Registers an exp gain so exp will automatically be gained.
+	 * Registers a Block to get exp from so exp will automatically be gained.
 	 * @param {BlockBreakExpGain} expgainer to register.
 	 */
 	public abstract void registerExpGain(BlockBreakExpGain gainer);
@@ -127,7 +127,7 @@ public interface Derius
 	// -------------------------------------------- //
 	
 	/**
-	 * Checks if a scheduled deactive is scheduled yet.
+	 * Checks if a scheduled deactivation is scheduled yet.
 	 * @param {ScheduledDeactivate} scheduled deactivate to check for.
 	 * @return {boolean} true is scheduled.
 	 */

@@ -1,11 +1,9 @@
 package dk.muj.derius.api.lvl;
 
-import java.util.OptionalInt;
-
 import com.massivecraft.massivecore.util.Txt;
 
 import dk.muj.derius.api.config.DLang;
-
+import dk.muj.derius.lib.optional.OptionalInt;
 
 public class LvlStatusDefault implements LvlStatus
 {
@@ -129,9 +127,9 @@ public class LvlStatusDefault implements LvlStatus
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getLvl()*prime;
-		result += this.getExp().hashCode()*31;
-		result += this.getExpToNextLvl().hashCode()*31;
+		result += this.getLvl() * prime;
+		result += this.getExp().hashCode() * prime;
+		result += this.getExpToNextLvl().hashCode() * prime;
 		
 		return result;
 	}

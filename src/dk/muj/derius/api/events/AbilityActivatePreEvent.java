@@ -84,8 +84,8 @@ public class AbilityActivatePreEvent extends DeriusEvent implements Cancellable,
 		int result = 1;
 		int prime = 31;
 		
-		result += this.getDPlayer().hashCode()*prime;
-		result += this.getAbility().hashCode()*prime;
+		result += this.getDPlayer().hashCode() * prime;
+		result += this.getAbility().hashCode() * prime;
 		
 		return result;
 	}

@@ -1,7 +1,5 @@
 package dk.muj.derius.api.util;
 
-import java.util.Optional;
-
 import org.apache.commons.lang.Validate;
 
 import com.massivecraft.massivecore.util.IdUtil;
@@ -16,6 +14,7 @@ import dk.muj.derius.api.events.AbilityActivatePostEvent;
 import dk.muj.derius.api.events.AbilityActivatePreEvent;
 import dk.muj.derius.api.events.AbilityDeactivateEvent;
 import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.lib.optional.Optional;
 
 public final class AbilityUtil
 {
@@ -127,7 +126,6 @@ public final class AbilityUtil
 		// EVENT
 		AbilityActivatePreEvent preEvent = new AbilityActivatePreEvent(ability, dplayer);
 		if ( ! preEvent.runEvent()) return CANCEL;
-		
 		
 		// STAMINA
 		dplayer.takeStamina(ability.getStaminaUsage());

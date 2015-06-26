@@ -14,13 +14,6 @@ import dk.muj.derius.lib.Getter;
 public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 {
 	// -------------------------------------------- //
-	// FIELDS
-	// -------------------------------------------- //
-	
-	private final Getter<Integer> levelGetter;
-	public int getlevel() { return this.levelGetter.get(); }
-	
-	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
@@ -36,6 +29,13 @@ public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 	{
 		return VerboseLevel.NORMAL;
 	}
+	
+	// -------------------------------------------- //
+	// FIELDS
+	// -------------------------------------------- //
+	
+	private final Getter<Integer> levelGetter;
+	public int getlevel() { return this.levelGetter.get(); }
 
 	// -------------------------------------------- //
 	// OVERRIDE: SKILL
