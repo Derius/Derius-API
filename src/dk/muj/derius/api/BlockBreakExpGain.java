@@ -38,4 +38,12 @@ public interface BlockBreakExpGain
 	 * The skill which exp should be granted in.
 	 */
 	public abstract Skill getSkill();
+	
+	/**
+	 * Registers this exp gain
+	 */
+	public default void register()
+	{
+		DeriusAPI.registerExpGain(this);
+	}
 }
