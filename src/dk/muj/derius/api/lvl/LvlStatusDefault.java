@@ -1,9 +1,10 @@
 package dk.muj.derius.api.lvl;
 
+import java.util.OptionalInt;
+
 import com.massivecraft.massivecore.util.Txt;
 
 import dk.muj.derius.api.config.DLang;
-import dk.muj.derius.lib.optional.OptionalInt;
 
 public class LvlStatusDefault implements LvlStatus
 {

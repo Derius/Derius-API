@@ -1,6 +1,7 @@
 package dk.muj.derius.api.ability;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.massivecraft.massivecore.Registerable;
 import com.massivecraft.massivecore.collections.WorldExceptionSet;
@@ -9,7 +10,6 @@ import dk.muj.derius.api.MillisLastCalculator;
 import dk.muj.derius.api.Req;
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.skill.Skill;
-import dk.muj.derius.lib.optional.Optional;
 
 public interface Ability<P> extends Registerable
 {

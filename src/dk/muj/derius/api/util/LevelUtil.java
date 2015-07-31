@@ -3,11 +3,10 @@ package dk.muj.derius.api.util;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.apache.commons.lang.Validate;
-
-import dk.muj.derius.lib.optional.Optional;
-import dk.muj.derius.lib.optional.OptionalDouble;
 
 public final class LevelUtil
 {

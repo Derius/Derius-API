@@ -1,6 +1,7 @@
 package dk.muj.derius.api.ability;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -8,7 +9,6 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import dk.muj.derius.api.player.DPlayer;
-import dk.muj.derius.lib.optional.Optional;
 
 /*
  * This class is for abilites that just provide a double drop.

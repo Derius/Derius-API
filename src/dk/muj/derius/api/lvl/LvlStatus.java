@@ -1,9 +1,8 @@
 package dk.muj.derius.api.lvl;
 
+import java.util.OptionalInt;
+
 import javax.annotation.concurrent.Immutable;
-
-import dk.muj.derius.lib.optional.OptionalInt;
-
 
 /**
  * This class is used for passing data about a players progress

@@ -2,13 +2,13 @@ package dk.muj.derius.api.ability;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.bukkit.Material;
 
 import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.util.LevelUtil;
-import dk.muj.derius.lib.optional.Optional;
-import dk.muj.derius.lib.optional.OptionalDouble;
 
 /* 
  * This class is made for similar abilities that all,

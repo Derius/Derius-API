@@ -1,5 +1,7 @@
 package dk.muj.derius.api.req;
 
+import java.util.function.IntSupplier;
+
 import com.massivecraft.massivecore.util.Txt;
 
 import dk.muj.derius.api.Req;
@@ -9,7 +11,6 @@ import dk.muj.derius.api.player.DPlayer;
 import dk.muj.derius.api.req.util.ReqAbilityToSkill;
 import dk.muj.derius.api.req.util.ReqNoDefault;
 import dk.muj.derius.api.skill.Skill;
-import dk.muj.derius.lib.Getter;
 
 public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 {
@@ -17,8 +18,8 @@ public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 	// INSTANCE & CONSTRUCT
 	// -------------------------------------------- //
 	
-	public static ReqIsAtleastLevel get(Getter<Integer> levelGetter) { return new ReqIsAtleastLevel(levelGetter); }
-	private ReqIsAtleastLevel(Getter<Integer> levelGetter) { this.levelGetter = levelGetter; }
+	public static ReqIsAtleastLevel get(IntSupplier levelGetter) { return new ReqIsAtleastLevel(levelGetter); }
+	private ReqIsAtleastLevel(IntSupplier levelGetter) { this.levelGetter = levelGetter; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE: VERBOSE LEVEL
@@ -34,8 +35,8 @@ public class ReqIsAtleastLevel implements Req, ReqAbilityToSkill, ReqNoDefault
 	// FIELDS
 	// -------------------------------------------- //
 	
-	private final Getter<Integer> levelGetter;
-	public int getlevel() { return this.levelGetter.get(); }
+	private final IntSupplier levelGetter;
+	public int getlevel() { return this.levelGetter.getAsInt(); }
 
 	// -------------------------------------------- //
 	// OVERRIDE: SKILL

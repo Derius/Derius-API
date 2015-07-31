@@ -3,6 +3,7 @@ package dk.muj.derius.api.player;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -11,7 +12,6 @@ import org.bukkit.entity.Player;
 import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.lvl.LvlStatus;
 import dk.muj.derius.api.skill.Skill;
-import dk.muj.derius.lib.optional.Optional;
 
 public interface DPlayer
 {

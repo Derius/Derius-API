@@ -13,7 +13,29 @@ import dk.muj.derius.api.skill.Skill;
  */
 public interface BlockBreakExpGain
 {
+	/**
+	 * Returns a map consisting of block types as keys
+	 * and a value telling how much exp should be granted when breaking such block.
+	 * The exp is only granted if the tooltype is present in
+	 * the tool types this exp gainer provides.
+	 */
 	public abstract Map<Material, Integer> getBlockTypes();
+	
+	/**
+	 * If a player is holding a tool of this type
+	 * they can be granted experience.
+	 * If they don't they cannot.
+	 * @return tools
+	 * The tool types which the player
+	 * can hold in order to be granted experience.
+	 */
 	public abstract Collection<Material> getToolTypes();
+	
+	/**
+	 * Gets the skill which exp should be granted in
+	 * when this exp gainer grants exp.
+	 * @return skill
+	 * The skill which exp should be granted in.
+	 */
 	public abstract Skill getSkill();
 }
